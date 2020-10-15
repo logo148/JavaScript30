@@ -41,7 +41,7 @@ body {
   height: 15px;
 
   transform-origin: 100%;
-  transform: rotate(90deg);
+  transform: rotate(150deg);
 
   filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.6));
 }
@@ -59,10 +59,11 @@ body {
   position: relative;
   left: 10%;
 
-  width: 139.2px;
-  height: 7px;
+  box-sizing: border-box;
+  width: 80%;
+  height: 100%;
 
-  border:solid 4px white;
+  border: solid 4px white;
   border-radius: 7.5px;
   background: black;
 }
@@ -75,7 +76,7 @@ body {
   height: 15px;
 
   transform-origin: 100%;
-  transform: rotate(90deg);
+  transform: rotate(35deg);
 
   filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.6));
 }
@@ -83,8 +84,9 @@ body {
   position: relative;
   left: 48%;
 
-  width: 69.28px;
-  height: 7px;
+  box-sizing: border-box;
+  width: 42%;
+  height: 100%;
 
   border: solid 4px white;
   border-radius: 7.5px;
@@ -103,7 +105,7 @@ body {
   margin: 6px 0px;
 
   transform-origin: 87.27%;
-  transform: rotate(9deg);
+  transform: rotate(90deg);
 
   transition: all 0.05s;
   transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
