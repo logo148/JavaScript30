@@ -1,0 +1,79 @@
+html {
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+    
+body {
+  margin: 0px;
+}
+
+.panels {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.panel {
+
+/*  box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);*/
+  
+  font-size: 20px;
+  text-align: center; /*.panel沒有文字好像沒用到，繼承？*/
+  color: white;
+
+  background: #6B0F9C;
+  background-size: cover;
+  background-position: center; /*外框flex，沒置中外框壓縮只會看到左上*/
+  
+  flex: 1;
+
+  display: flex; /*這一層是外容器為了下一層的內元件設定*/
+  flex-direction: column; 
+  justify-content: center; /*即使沒設定這行，因為它的內元件有設定flex:，所以也會自己延伸*/
+  align-items: center;
+}
+
+/* Flex Items */
+.panel > * { /*只有下一層的全部任何元件*/
+  margin: 0;
+  width: 100%;
+  border: solid 1px black;
+/*  transition: transform 0.5s;*/
+  flex: 1 0 auto; /*內元件，沒有設定這個，此層會集中到中間（兩旁可能會有空白）*/
+
+  display: flex; /*讓字置中的寫法，<p>是外容器/文字等於是內容器，文字就不用設定flex:了*/
+  justify-content: center;
+  align-items: center;
+}
+
+
+.panel p { /*下一層、下下一層..全部的<p>*/
+  text-transform: uppercase;
+  font-family: 'Amatic SC', cursive;
+/*  text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);*/
+  font-size: 2em;
+}
+
+
+/*.panel > *:first-child { transform: translateY(-100%); }
+.panel > *:last-child { transform: translateY(100%); }*/
+
+.panel p:nth-child(2) {
+  font-size: 4em;
+}
+
+.panel1 { background-image:url("001.jpg"); }
+.panel2 { background-image:url("002.jpg"); }
+.panel3 { background-image:url("003.jpg"); }
+.panel4 { background-image:url("004.jpg"); }
+.panel5 { background-image:url("005.jpg"); }
+
+
+
+/*先測試放寬panel的效果
+.panels .panel:nth-child(2n+1) {
+  flex: 2;
+}*/
