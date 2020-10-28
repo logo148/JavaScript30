@@ -18,7 +18,7 @@ let mouseButton = 0; //按下的是滑鼠按鍵
 
 function draw(e) {
 	if (!isDrawing) return;
-console.log(ctx.lineWidth);
+
 	ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
 	ctx.beginPath();
@@ -44,7 +44,6 @@ console.log(ctx.lineWidth);
 	} else {
 		ctx.lineWidth-=0.6;
 	}
-
 
 }
 
