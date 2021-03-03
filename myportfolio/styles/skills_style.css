@@ -1,0 +1,79 @@
+
+/*類別*/
+.content > h2 {
+	margin: 25px; 
+	padding-left: 10px;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid #888;
+	font-weight: 500;
+}
+
+.skillcontent {
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+	padding-left: 10px;
+	justify-content: flex-start;
+}
+/*單件*/
+.skill {
+	width: 150px;
+	margin: 15px;
+	text-align: center;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	transform: translateY(0px);
+	transition: 0.5s;
+}
+/*圖片*/
+.skill > img {
+	width: 100%;
+}
+/*文字*/
+.skill .txt {
+	padding: 20px;
+}
+
+.txt > h2 {
+	font-size: 1.2em;
+	border-bottom: 1px solid #888;
+	padding-bottom: 0.3em;
+	margin-bottom: 0.4em;
+	font-weight: 900; 
+	transition: 0.25s;
+}
+
+.txt > p {
+	font-size: 0.8em;
+	line-height: 1.6;
+	font-weight: 300;
+	transition: 0.25s;
+}
+/*特效*/
+.skill:hover{
+	transform: translateY(-50px);
+	background-image: linear-gradient(0deg, #244865, #4ca8e6);
+}
+
+.skill:hover h2{
+	color: #fff;
+	border-bottom-color: #fff;
+}
+
+.skill:hover p{
+	color: #fff;
+}
+/*導覽列*/
+nav > a:nth-child(2) {
+  font-weight: 500;
+  color: #f0437e;
+  border-bottom: 2px solid #f0437e;
+}
+
+@media screen and (min-width: 768px){
+
+	nav a:nth-child(2) {
+		border-bottom: none;
+	}
+
+}
