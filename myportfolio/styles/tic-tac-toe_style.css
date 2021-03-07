@@ -20,6 +20,7 @@
 	font-weight: bold;
 	color: rgb(242, 235, 211);
 	background: rgb(10,189,172);
+  cursor: pointer;
 }
 /*遊戲區*/
 #gamearea {
@@ -127,12 +128,11 @@ nav > a:nth-child(3) {
   .gamezone {
     margin-top: 35px;
     margin-right: 5px;
-	padding: 0;
+    padding: 0;
     width: 60%;
     min-width: 290px;
     max-width: 600px;
-
-	background-color: transparent;
+    background-color: transparent;
   }
 
   .text{

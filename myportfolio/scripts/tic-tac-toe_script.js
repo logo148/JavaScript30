@@ -63,10 +63,14 @@ window.onload = function() {
 	var canvas = document.querySelectorAll(".draw");
 	var lineCanvas = document.querySelector("#winnerLine");
 	canvas.forEach( canva => canva.addEventListener("click", userRound, false) );
+	message.addEventListener("click", reset, false);
 	lineCanvas.addEventListener("click", reset, false);
 	reset();
 
 	function reset() {
+		if (!result()) {
+			isMyTurn = false;
+		}
 		for (var i = 0; i < 9; i++) {
 			allDesks[i].status = none;
 		}
