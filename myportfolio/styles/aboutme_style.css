@@ -41,6 +41,7 @@
 /*聯絡資訊*/
 .contact {
 	border-top: 2px solid #ccc;
+ 	text-decoration: none;
 }
 
 .contact > li {
@@ -88,6 +89,7 @@
 	border-radius: 3px;
 	color: #fff;
 	font-size: 0.8em;
+ 	text-decoration: none;
 	background-color: #6cb7eb;
 }
 /*內文*/
