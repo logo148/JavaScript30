@@ -1,37 +1,47 @@
 $(document).ready(function(){
 
+
+
 	$(".nextbtn").click(function(){
-		var srcString = $(this).prev().children().attr("src").substring(17,23);
-		var nowNum = parseInt(srcString[5]);
-		var maxNum = parseInt(srcString[3]);
-		var picName = srcString.substring(0,2);
-		if(nowNum == maxNum){
-			nowNum = 0;
+		var $next = $(this).parents(".piczone").find(".selecdpic").next();
+		if ($next.length == 0) {
+			$(this).parents(".piczone").find(".portfoliopics").first().trigger('click');
+		} else {
+			$next.trigger('click');
 		}
-		nowNum++;
-		$(this).prev().children().attr("src","images/portfolio/" + picName + "_" + maxNum + "-" + nowNum + ".jpg");
-	})
+	});
 	$(".prevbtn").click(function(){
-		var srcString = $(this).next().children().attr("src").substring(17,23);
-		var nowNum = parseInt(srcString[5]);
-		var maxNum = parseInt(srcString[3]);
-		var picName = srcString.substring(0,2);
-		if(nowNum == 1){
-			nowNum = maxNum+1;
+		var $prev = $(this).parents(".piczone").find(".selecdpic").prev();
+		if ($prev.length == 0) {
+			$(this).parents(".piczone").find(".portfoliopics").last().trigger('click');
+		} else {
+			$prev.trigger('click');
 		}
-		nowNum--;
-
-		$(this).next().children().attr("src","images/portfolio/" + picName + "_" + maxNum + "-" + nowNum + ".jpg");
-	})
-
-	$(".portfoliopics").click(function(){
-		$("#fullsizepic").attr("src", $(this).attr("src"));
-		$(".largerpic").css({"display":"block"});
 	});
 
+	$(".portfoliopics").click(function(){
+		$(this).parent().children().removeClass("selecdpic");
+		$(this).addClass("selecdpic");
+		$(this).parents(".piczone").find(".mainpic").attr("src",$(this).children().attr("src"));
+	});
+
+
+	$(".showpic").click(function(){
+		$("#fullsizepic").attr("src", $(this).children().attr("src"));
+		$(".largerpic").css({"display":"block"});
+	});
 	$(".largerpic").click(function(){
 		$(this).css({"display":"none"});
 	});
+
+
+	$(".skill").click(function(){
+		var np;
+		var src = $(this).children().first().attr("src");
+		src[src.length-5] == 0 ? np = 0 : src[src.length-5] == 1 ? np = 2 : np = 1;
+		$(this).children().first().attr("src", src.substring(0, src.length-5) + np + ".jpg");
+	});	
+
 
 });
 

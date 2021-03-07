@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UFT-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<title>Tic-Tac-Toe</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="styles/my_style.css">
+		<link rel="stylesheet" href="styles/tic-tac-toe_style.css">
+	</head>
+	<body>
+		<input type="checkbox" id="menu_control">
+		<div class="header">
+			<div class="logo">
+				<a href="index.html"><img src="images/logo.png" height="40"></a>
+			</div>
+			<label for="menu_control" class="menu_btn">
+				<span>選單</span>
+			</label>		
+		</div>
+		<div class="content">
+			<div class="cases">
+			<div class="gamezone">
+				<div id="messagearea">井字遊戲</div>
+				<div id="gamearea">
+					<canvas id="winnerLine" width="290" height="290"></canvas>
+					<table>					
+						<tr>
+							<td class="top left"><canvas class="draw" id="a0" width="90" height="90"></canvas></td>
+							<td class="top center"><canvas class="draw" id="a1" width="90" height="90"></canvas></td>
+							<td class="top right"><canvas class="draw" id="a2" width="90" height="90"></canvas></td>
+						</tr>
+						<tr>
+							<td class="middle left"><canvas class="draw" id="b0" width="90" height="90"></canvas></td>
+							<td class="middle center"><canvas class="draw" id="b1" width="90" height="90"></canvas></td>
+							<td class="middle right"><canvas class="draw" id="b2" width="90" height="90"></canvas></td>
+						</tr>
+						<tr>
+							<td class="bottom left"><canvas class="draw" id="c0" width="90" height="90"></canvas></td>
+							<td class="bottom center"><canvas class="draw" id="c1" width="90" height="90"></canvas></td>
+							<td class="bottom right"><canvas class="draw" id="c2" width="90" height="90"></canvas></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="text">
+                <h2>井字遊戲</h2>
+                <p>canvas，自寫語法判斷所有贏法，優先取勝，次優先阻擋玩家獲勝，並以快速連線為目標。</p>
+                <h4>使用工具</h4>
+                <ul>
+                    <li>
+                        <img src="images/skills/html0.jpg" width="30"><span>HTML</span>
+                    </li>
+                    <li>
+                    	<img src="images/skills/css0.jpg" width="30"><span>CSS</span>
+                    </li>
+                    <li>
+                    	<img src="images/skills/javascript0.jpg" width="30"><span>JavaScript</span>
+                    </li>
+                </ul>
+            </div>
+			</div>
+		</div>
+		<nav>
+			<a href="index.html">自傳與經歷</a>
+			<a href="myskills.html">具備技能</a>
+			<a href="tic-tac-toe.html">網頁作品1</a>
+			<a href="#">網頁作品2</a>
+			<a href="#">網頁作品3</a>
+			<a href="#">產品設計作品</a>
+			<a href="graphicdesign.html">平面設計作品</a>
+		</nav>
+		<footer>
+			<p>Copyright &copy; 2021</p>
+		</footer>
+
+		<script src="scripts/jquery-3.5.1.js"></script>
+		<script src="scripts/my_scripts.js"></script>
+		<script src="scripts/tic-tac-toe_script.js"></script>
+		<script src="scripts/jquery.idTabs.min.js"></script>
+
+	</body>
+
+</html>
+
+
+

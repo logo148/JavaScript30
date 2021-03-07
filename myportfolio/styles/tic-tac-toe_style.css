@@ -1,0 +1,150 @@
+:root {
+	--border: 10px;
+	--deskSize: 90px;
+}
+/*作品區*/
+.gamezone {
+	padding: 30px 10px;
+	color: transparent;
+	background-color: rgb(242, 235, 211);
+}
+/*說明區*/
+#messagearea {
+	box-sizing: border-box;
+	margin: auto;
+	padding: 10px;
+	width: calc(var(--deskSize)*3 + var(--border)*2);
+	text-align: center;
+	font-family: monospace;
+	font-size: 3em;
+	font-weight: bold;
+	color: rgb(242, 235, 211);
+	background: rgb(10,189,172);
+}
+/*遊戲區*/
+#gamearea {
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+table {
+	position: relative;
+	border-collapse: collapse;
+}
+.middle, .center{
+	border-style: solid;
+	border-color: rgb(84, 84, 84);
+}
+.middle {
+	border-width: var(--border) 0px;
+}
+.center {
+	border-width: 0px var(--border);
+}
+.middle.center{
+	border-width: var(--border) var(--border);
+}
+
+td canvas {
+	display: block;
+	cursor: pointer;
+}
+
+canvas#winnerLine {
+	position: absolute;
+	display: block;
+	cursor: pointer;
+}
+
+/*文字區*/
+.text {
+  margin: 10px;
+  padding: 3px;
+}
+/*標題*/
+.text > h2 {
+  margin: 5px 15px;
+  border-bottom: 1px solid #888;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.4em;
+  font-weight: 500;
+}
+
+.text > p {
+  margin: 5px 15px;
+  padding: 5px;
+  font-size: 0.9em;
+  line-height: 1.6;
+  font-weight: 100;
+}
+/*附註*/
+.text > h4 {
+  margin: 20px 15px 10px;
+  padding: 5px;
+  width: 100px;
+  border-bottom: 1px solid #888;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.4em;
+  font-weight: 400;
+}
+
+.text > ul {
+  margin: 10px 15px;
+}
+
+.text > ul > li {
+  margin: 10px;
+}
+
+.text > ul > li > img {
+  vertical-align: middle;
+}
+
+.text > ul > li > span {
+  font-size: 0.9em;
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+/*導覽列*/
+nav > a:nth-child(3) {
+  font-weight: 500;
+  color: #f0437e;
+  border-bottom: 2px solid #f0437e;
+}
+/*RWD*/
+@media screen and (min-width: 768px) {
+
+  .cases {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 50px;
+  }
+
+  .gamezone {
+    margin-top: 35px;
+    margin-right: 5px;
+	padding: 0;
+    width: 60%;
+    min-width: 290px;
+    max-width: 600px;
+
+	background-color: transparent;
+  }
+
+  .text{
+    margin: 0;
+    margin-top: 35px;
+    margin-left: 5px;
+    width: 40%;
+    max-width: 400px;
+  }
+
+  nav > a:nth-child(3) {
+    border-bottom: none;
+  }
+
+}

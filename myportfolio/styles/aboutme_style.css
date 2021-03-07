@@ -1,101 +1,112 @@
-
-.content {
-
-}
-
 /*banner*/
 .banner {
-	background-image: linear-gradient(25deg, #244865, #4ca8e6);
 	margin: auto;
-	padding: 20px;
+	text-align: center;
+	background-image: linear-gradient(25deg, #244865, #4ca8e6);
 }
 
-.banner > img {
+.container {
+	color: snow;
+}
+.container > img {
 	margin: 10px;
 	width: 100px;
 	vertical-align: middle;
 }
-
+/*簡介*/
 .brief {
-	display: inline-block;
-	max-width: 60%;
-	color: snow;
+	margin: 0 30px 20px;
 	font-size: 10px;
 	vertical-align: middle;
-	padding-left: 20px;
 	font-weight: 100;
 }
 
 .brief > h2 {
+	margin-bottom: 15px;
 	font-size: 20px;
-	margin-bottom: 10px;
 }
 
 .brief > p {
-	margin-top: 5px;
+	font-size: 1.5em;
 	line-height: 1.4;
+	text-align: left;
 }
 
-
-
-
-
-
-
-
-.intro {
-	padding: 5px;
-	padding-right: 20px;
-	font-weight: 100;
+.brief > blockquote {
+	margin-top: 10px;
+	font-size: 1.2em;
+	font-weight: 300;
+	text-align: left;
+}
+/*聯絡資訊*/
+.contact {
+	border-top: 2px solid #ccc;
 }
 
-
-
-.intro h2 {
-	color: #224663;
-	padding-left: 20px;
-	margin: 10px;
-	margin-bottom: 0px;
-	font-weight: 500;
+.contact > li {
+	display: inline-block;
+	margin: 10px auto;
 }
 
-.intro h2 img{
-  vertical-align: sub;
-}
-
-
-
-.intro h4 {
-	font-size: 1em;
-	font-weight: 400;
-	margin: 10px;
-	margin-top: 0px;
-	padding-left: 54px;
-	color: #479ff8;
-
-}
-.intro p {
-	border-left: 3px solid #d8d8d8;
-	margin: 10px 10px 20px 43px;
-	padding: 5px 20px;
-	/*width: 350px;*/
-}
-.intro ol{
-	margin-left: 57px;
-	list-style-type: decimal;
+.contact > li > span {
+	padding: 0 5px;
+	font-size: 0.6em;
 	font-weight: 300;
 }
-.intro ol li {
+
+.contact > li > img{
+	vertical-align: middle;
+}
+/*內容區*/
+.intro {
+	padding: 20px;
+	font-weight: 100;
+}
+/*標題*/
+.intro > img{
+	vertical-align: middle;
+}
+
+.intro > h2 {
+	display: inline;
+	margin-left: 10px;
+	width: auto;
+	color: #224663;
+	font-weight: 500;
+	vertical-align: bottom;
+}
+/*標籤*/
+.tags {
+	margin-left: 40px;
+	font-weight: 400;
+}
+
+.tags > span {
+	display: inline-block;
+	margin: 3px 10px 3px 3px;
+	padding: 2px;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 0.8em;
+	background-color: #6cb7eb;
+}
+/*內文*/
+.intro > p {
+	border-left: 3px solid #ccc;
+	margin: 10px 10px 30px 14px;
+	padding: 10px 10px 10px 23px;
+}
+/*列表*/
+.intro > ol{
+	border-left: 3px solid #ccc;
+	margin: 0 0 30px 14px;
+	padding-left: 23px;
+	font-weight: 300;
+}
+
+.intro > ol > li {
 	padding: 2px;
 }
-
-
-@media screen and (min-width: 768px){
-	.intro {
-		margin-right: 100px;
-	}
-}
-
 
 /*導覽列*/
 nav > a:nth-child(1) {
@@ -103,9 +114,53 @@ nav > a:nth-child(1) {
   color: #f0437e;
   border-bottom: 2px solid #f0437e;
 }
+/*RWD*/
+@media screen and (min-width: 768px){
 
- @media screen and (min-width: 768px){
- 	 nav a:nth-child(1) {
+	.banner {
+		padding: 20px;
+		text-align: left;
+	}
 
-	border-bottom: none;
- }
+	.container{
+		margin: 0 auto;
+		max-width: 800px;
+	}
+
+	.brief {
+		display: inline-block;
+		margin: 20px 20px 20px 10px;
+		max-width: 60%;
+	}
+
+	.contact {
+		display: inline-block;
+		border: none;
+		vertical-align: middle;
+		background-color: transparent;
+	}
+
+	.intro {
+		/*padding: 30px;*/
+		margin: auto;
+		max-width: 800px;
+	}
+
+ 	nav a:nth-child(1) {
+
+		border-bottom: none;
+ 	}
+}
+/*RWD banner*/
+@media screen and (min-width: 1094px){
+
+	.contact {
+		padding-left: 20px;
+		border-left: 1px solid snow;
+	}
+
+	.contact > li {
+		display: block;
+	}
+	
+}
