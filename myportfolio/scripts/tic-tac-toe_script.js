@@ -161,16 +161,16 @@ window.onload = function() {
 		}
 		for (var i = 0; i < 3; i++) {
 			if ( (statusArray[i][0] == statusArray[i][1]) && (statusArray[i][1] == statusArray[i][2]) && (statusArray[i][2] != none) ) {
-				start = [deskSize*0.1, (deskSize * 0.5) + (deskSize + border) * i];
-				end = [(deskSize * 2.9) + border * 2, (deskSize * 0.5) + (deskSize + border) * i];
+				start = [0, (deskSize * 0.5) + (deskSize + border) * i];
+				end = [(deskSize * 3) + border * 2, (deskSize * 0.5) + (deskSize + border) * i];
 				winner = statusArray[i][0];
 				break;
 			}
 		}
 		for (var i = 0; i < 3; i++) {
 			if ( (statusArray[0][i] == statusArray[1][i]) && (statusArray[1][i] == statusArray[2][i]) && (statusArray[2][i] != none) ) {
-				start = [(deskSize * 0.5) + (deskSize + border) * i, deskSize*0.1];
-				end = [(deskSize * 0.5) + (deskSize + border) * i, (deskSize * 2.9) + border * 2];
+				start = [(deskSize * 0.5) + (deskSize + border) * i, 0];
+				end = [(deskSize * 0.5) + (deskSize + border) * i, (deskSize * 3) + border * 2];
 				winner = statusArray[0][i];
 				break;
 			}
