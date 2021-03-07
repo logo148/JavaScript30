@@ -41,12 +41,12 @@
 }
 /*聯絡資訊*/
 .contact {
-	border-top: 2px solid #ccc;
+	border-top: 2px solid #f7f7f7;
 }
 
 .contact > li {
 	display: inline-block;
-	margin: 10px auto;
+	margin: 10px auto 15px;
 }
 
 .contact > li > span {
