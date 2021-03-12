@@ -9,7 +9,9 @@
 html {
  	background-color: #f7f7f7;
 }
-
+body {
+	overflow-y: scroll;
+}
 /*頁首*/
 .header {
 	position: relative;

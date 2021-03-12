@@ -59,7 +59,7 @@ window.onload = function() {
 		},
 	];
 
-	var message = document.getElementById("messagearea");
+	var message = document.getElementById("titlearea");
 	var canvas = document.querySelectorAll(".draw");
 	var lineCanvas = document.querySelector("#winnerLine");
 	canvas.forEach( canva => canva.addEventListener("click", userRound, false) );

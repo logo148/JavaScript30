@@ -1,40 +1,9 @@
 
-/*選單*/
-.content > ul{
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
-  border-bottom: 1px solid #888;
-}
-
-.content > ul > li > a {
-  display: block;
-  padding: 4px 6px;
-  text-align: center;
-  text-decoration: none;
-  color: #aaa;
-  font-size: 1em;
-  font-weight: 300;
-  transition: .5s;
-}
-
-.content > ul > li > a:hover {
-  color: #000;
-  background-color: #e1decf;
-}
-
-.content > ul > li > a.selected {
-  color: #000;
-  background-color: #e1decf;
-  cursor: default;
-}
-
 /*內容*/
 
 /*圖片區*/
-.piczone {
-  margin-top: 10px;
+.mainzone {
+  margin-top: 20px;
   color: transparent;
 }
 /*大圖區*/
@@ -189,7 +158,7 @@ nav > a:nth-child(7) {
 /*RWD*/
 @media screen and (max-width: 768px) and (max-height: 415px) {
 
-  .piczone {
+  .mainzone {
     width: auto;
     margin: 10px auto;
   }
@@ -206,15 +175,6 @@ nav > a:nth-child(7) {
 
 @media screen and (min-width: 768px) {
 
-  .content > ul { 
-    justify-content: flex-end;
-  }
-
-  .content > ul > li > a {
-    padding: 6px 10px;
-    font-size: 1em;
-  }
-
   .cases {
     display: flex;
     flex-direction: row;
@@ -223,8 +183,8 @@ nav > a:nth-child(7) {
     padding: 30px 50px;
   }
 
-  .piczone {
-    margin-right: 5px;
+  .mainzone {
+    margin-right: 10px;
     width: 60%;
     max-width: 600px;
   }
@@ -242,7 +202,7 @@ nav > a:nth-child(7) {
 
   .text{
     margin: 0;
-    margin-left: 5px;
+    margin-left: 10px;
     width: 40%;
     max-width: 400px;
   }
@@ -252,20 +212,6 @@ nav > a:nth-child(7) {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

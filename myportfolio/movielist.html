@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>To-Watch-List</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/my_style.css">
+    <link rel="stylesheet" href="styles/submenu_style.css">
+    <link rel="stylesheet" href="styles/movielist_style.css">
+</head>
+
+<body>
+    <input type="checkbox" id="menu_control">
+    <div class="header">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" height="40"></a>
+        </div>
+        <label for="menu_control" class="menu_btn">
+            <span>選單</span>
+        </label>
+    </div>
+    <div class="content">
+        <ul class="idTabs">
+            <li><a href="#present">作品展示</a></li>
+            <li><a href="#html">HTML</a></li>
+            <li><a href="#css">CSS</a></li>
+            <li><a href="#js">Javascript</a></li>
+        </ul>
+        <div class="cases" id="present">
+            <div class="mainzone">
+                <h2 id="titlearea">我的電影片單</h2>
+                <form class="searcharea" action="search" autocomplete="off">
+                    <input type="search" id="searchtext" placeholder="請輸入電影名稱">
+                    <button type="button" id="searchbtn"></button>
+                </form>
+                <div class="foldarea" id="mylistarea">
+                    <input type="checkbox" name="" class="fold_control" id="mylist_fold">
+                    <label class="foldbtn" for="mylist_fold">收摺</label>
+                    <h3>我的片單</h3>
+                    <div class="moviecontent">
+                        <ul class="allmymovies">
+<!--                             <li class="mymovie">
+                                <a href="https://www.themoviedb.org/movie/577922">TENET天能</a>
+                                <button type="button" class="deletemovie"></button>
+                            </li>
+                            <li class="mymovie">
+                                <a href="https://www.themoviedb.org/movie/577922">TENET天能布萊德彼特之即刻毀滅</a>
+                                <button type="button" class="deletemovie"></button>
+                            </li>
+                            <li class="mymovie">
+                                <a href="https://www.themoviedb.org/movie/577922">TENET天能布萊德彼特之即刻毀滅</a>
+                                <button type="button" class="deletemovie"></button>
+                            </li>
+                            <li class="mymovie">
+                                <a href="https://www.themoviedb.org/movie/577922">TENET天能布萊德彼特之即刻毀滅</a>
+                                <button type="button" class="deletemovie"></button>
+                            </li>
+                            <li class="mymovie">
+                                <a href="https://www.themoviedb.org/movie/577922">TENET天能</a>
+                                <button type="button" class="deletemovie"></button>
+                            </li>
+                            <li class="mymovie">
+                                <a href="https://www.themoviedb.org/movie/577922">TENET天能布萊德彼特之即刻毀滅</a>
+                                <button type="button" class="deletemovie"></button>
+                            </li>
+                            <li class="mymovie">
+                                <a href="https://www.themoviedb.org/movie/577922">TENET天能布萊德彼特之即刻毀滅</a>
+                                <button type="button" class="deletemovie"></button>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="foldarea" id="resultarea">
+                    <input type="checkbox" name="" class="fold_control" id="result_fold">
+                    <label class="foldbtn" for="result_fold">收摺</label>
+                    <h3>搜尋結果</h3>
+                    <div class="moviecontent">
+                        <ul class="allresultmovies">
+<!--                             <li class="resultmovie">
+                                <a href="https://www.themoviedb.org/movie/577922"><img src="https://image.tmdb.org/t/p/w200/yj2fK2noJy7IeC7IF7Ck89rGYOI.jpg"></a>
+                                <div class="movieinfo">
+                                    <a href="https://www.themoviedb.org/movie/577922">TENET天能</a>
+                                    <p>時間將至。克里斯多福諾蘭編導，卡司羅伯派汀森、約翰大衛華盛頓主演。這不是時空旅行，而是逆轉未來。全新主角必須僅靠一個字「天能」，在順向與逆轉的時空中，為地球全人類的存亡誓死奮戰。</p>
+                                </div>
+                                <button type="button" class="addmovie"></button>
+                            </li>
+                            <li class="resultmovie">
+                                <a href="https://www.themoviedb.org/movie/790331-tenet"><img src="https://image.tmdb.org/t/p/w200/jdwSkQu3XirmX18MNj8CqFWsCk.jpg"></a>
+                                <div class="movieinfo">
+                                    <a href="https://www.themoviedb.org/movie/4944">布萊能布萊德彼德彼特之即刻毀滅</a>
+                                    <p>資深分析員奧斯彭卡克斯（John Malkovich 飾）出席一場秘密會議，未料會議機密竟很快被揭露，因此即將被組織撤職。 對於即將失業的事實感到憤慨又無奈的他，獨自回到位於華府喬治城的老家，要把所有中央情報局（CIA）不可告人的秘密，都寫在回憶錄上出版，以表達他的不滿。 同時，他早已紅杏出牆的妻子凱蒂（Tilda Swinton 飾），則是勾搭已婚的聯邦保安官哈利法勒（George Clooney 飾），打算拋棄他與哈利遠走高飛。 這張暗藏超級國家機密的光碟，竟然遺失在健身房，落入成天想動整型手術再嚐人生第二春的健身中心員工琳達麗慈（Frances McDormand 飾），與她的熱血同事（Brad Pitt 飾）手中。 一心想要發筆橫財的查德與琳達、心儀琳達的經理泰德崔逢（Richard Jenkins 飾）、保安官哈利、外遇的凱蒂與被撒職的卡克斯，將為爭奪光碟做出什麼樣令人匪夷所思的事情？ 本片改編自前美國中情局局長斯坦菲爾德特納的小說「高度機密：總統、中情局局長和特務」，斯坦菲爾德特納曾於1977年至1981年間擔任過美國中情局局長。 導演科恩兄弟將原來的故事做了一些改變，把電影拍成他們最擅長的黑色喜劇。故事的主要劇情為：一個中情局特務在撰寫回憶錄時，丟掉了一張儲存了自己手稿的光碟。 故事中的主角都是中年人，分別經歷了工作、生活和性方面的危機，把中情局和健身中心擺在一起，再加入網路交友的元素，巧妙地結合喜劇、諷刺和性鬧劇等元素，成為一部引人入勝、眾星雲集的黑色幽默喜劇。</p>
+                                </div>
+                                <button type="button" class="addmovie"></button>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text">
+                <h2>電影片單</h2>
+                <p>透過AJAX請求「TMDB電影資料庫網站」的API搜尋資料，並顯示於搜尋結果欄。可將搜尋結果增加到上方清單內，並離線保存，於下次開啟本網頁時仍保存增加的電影清單。</p>
+                <h4>使用工具</h4>
+                <ul>
+                    <li>
+                        <img src="images/skills/html0.jpg" width="30"><span>HTML</span>
+                    </li>
+                    <li>
+                        <img src="images/skills/css0.jpg" width="30"><span>CSS</span>
+                    </li>
+                    <li>
+                        <img src="images/skills/javascript0.jpg" width="30"><span>JavaScript</span>
+                    </li>
+                    <li>
+                        <img src="images/skills/jquery0.jpg" width="30"><span>jQuery</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="cases" id="html">
+        </div>
+        <div class="cases" id="css">
+        </div>
+        <div class="cases" id="js">
+        </div>
+    </div>
+    <nav>
+        <a href="index.html">自傳與經歷</a>
+        <a href="myskills.html">具備技能</a>
+        <a href="tic-tac-toe.html">網頁作品1</a>
+        <a href="movielist.html">網頁作品2</a>
+        <a href="#">網頁作品3</a>
+        <a href="#">產品設計作品</a>
+        <a href="graphicdesign.html">平面設計作品</a>
+    </nav>
+    <footer>
+        <p>Copyright &copy; 2021</p>
+    </footer>
+    <script src="scripts/jquery-3.5.1.js"></script>
+    <script src="scripts/my_scripts.js"></script>
+    <script src="scripts/movielist_script.js"></script>
+    <script src="scripts/jquery.idTabs.min.js"></script>
+</body>
+
+</html>

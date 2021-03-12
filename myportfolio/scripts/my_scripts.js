@@ -3,17 +3,17 @@ $(document).ready(function(){
 
 
 	$(".nextbtn").click(function(){
-		var $next = $(this).parents(".piczone").find(".selecdpic").next();
+		var $next = $(this).parents(".mainzone").find(".selecdpic").next();
 		if ($next.length == 0) {
-			$(this).parents(".piczone").find(".portfoliopics").first().trigger('click');
+			$(this).parents(".mainzone").find(".portfoliopics").first().trigger('click');
 		} else {
 			$next.trigger('click');
 		}
 	});
 	$(".prevbtn").click(function(){
-		var $prev = $(this).parents(".piczone").find(".selecdpic").prev();
+		var $prev = $(this).parents(".mainzone").find(".selecdpic").prev();
 		if ($prev.length == 0) {
-			$(this).parents(".piczone").find(".portfoliopics").last().trigger('click');
+			$(this).parents(".mainzone").find(".portfoliopics").last().trigger('click');
 		} else {
 			$prev.trigger('click');
 		}
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	$(".portfoliopics").click(function(){
 		$(this).parent().children().removeClass("selecdpic");
 		$(this).addClass("selecdpic");
-		$(this).parents(".piczone").find(".mainpic").attr("src",$(this).children().attr("src"));
+		$(this).parents(".mainzone").find(".mainpic").attr("src",$(this).children().attr("src"));
 	});
 
 

@@ -1,0 +1,60 @@
+/*選單*/
+.content > ul{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #888;
+}
+
+.content > ul > li > a {
+  display: block;
+  padding: 4px 6px;
+  text-align: center;
+  text-decoration: none;
+  color: #aaa;
+  font-size: 1em;
+  font-weight: 300;
+  transition: .5s;
+}
+
+.content > ul > li > a:hover {
+  color: #000;
+  background-color: #e1decf;
+}
+
+.content > ul > li > a.selected {
+  color: #000;
+  background-color: #e1decf;
+  cursor: default;
+}
+/*RWD*/
+@media screen and (min-width: 768px) {
+
+  .content > ul { 
+    padding-right: 20px;
+    justify-content: flex-end;
+  }
+
+  .content > ul > li > a {
+    padding: 6px 10px;
+    font-size: 1em;
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
