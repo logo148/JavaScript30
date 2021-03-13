@@ -1,3 +1,67 @@
+/*文字區*/
+.text {
+    margin: 10px;
+    padding: 3px;
+}
+
+/*標題*/
+.text>h2 {
+    margin: 5px 15px;
+    border-bottom: 1px solid #888;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.4em;
+    font-weight: 500;
+}
+
+.text>p {
+    margin: 5px 15px;
+    padding: 5px;
+    font-size: 1em;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/*附註*/
+.text>h4 {
+    margin: 20px 15px 10px;
+    padding: 5px;
+    width: 100px;
+    border-bottom: 1px solid #888;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.4em;
+    font-weight: 400;
+}
+
+.text>ul {
+    margin: 10px 15px;
+    list-style: none;
+}
+
+.text>ul>li {
+    margin: 10px;
+}
+
+.text>ul>li>img {
+    vertical-align: middle;
+}
+
+.text>ul>li>span {
+    font-size: 0.9em;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .description {
     padding: 0 20px;
 }
@@ -21,10 +85,10 @@ pre {
 
 .description>p {
     margin: 10px;
-    padding: 5px 10px;
-    font-size: 1em;
+    padding: 10px 20px;
+    font-size: 1.1em;
     line-height: 1.6;
-    font-weight: 400;
+    font-weight: 300;
     background-color: #f0f0f0;
 }
 
@@ -63,9 +127,9 @@ pre {
 .description>ol,
 .description>ul {
     margin: 10px;
-    padding: 5px 10px 5px 30px;
-    font-size: 0.9em;
-    font-weight: 100;
+    padding: 5px 20px 5px 40px;
+    font-size: 1em;
+    font-weight: 300;
     background-color: #f0f0f0;
 }
 
@@ -111,6 +175,13 @@ pre {
 
 @media screen and (min-width: 768px) {
 
+    .text {
+        margin: 0;
+        margin-left: 10px;
+        width: 40%;
+        max-width: 400px;
+    }
+
     .description {
         margin: 0 auto;
         padding: 0;
@@ -133,79 +204,3 @@ pre {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*文字區*/
-.text {
-    margin: 10px;
-    padding: 3px;
-}
-
-/*標題*/
-.text>h2 {
-    margin: 5px 15px;
-    border-bottom: 1px solid #888;
-    padding-bottom: 0.3em;
-    margin-bottom: 0.4em;
-    font-weight: 500;
-}
-
-.text>p {
-    margin: 5px 15px;
-    padding: 5px;
-    font-size: 0.9em;
-    line-height: 1.6;
-    font-weight: 100;
-}
-
-/*附註*/
-.text>h4 {
-    margin: 20px 15px 10px;
-    padding: 5px;
-    width: 100px;
-    border-bottom: 1px solid #888;
-    padding-bottom: 0.3em;
-    margin-bottom: 0.4em;
-    font-weight: 400;
-}
-
-.text>ul {
-    margin: 10px 15px;
-    list-style: none;
-}
-
-.text>ul>li {
-    margin: 10px;
-}
-
-.text>ul>li>img {
-    vertical-align: middle;
-}
-
-.text>ul>li>span {
-    font-size: 0.9em;
-    margin-left: 10px;
-    font-weight: 400;
-}
-
-
-@media screen and (min-width: 768px) {
-
-    .text {
-        margin: 0;
-        margin-left: 10px;
-        width: 40%;
-        max-width: 400px;
-    }
-
-}
