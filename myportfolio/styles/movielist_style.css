@@ -44,6 +44,7 @@
 
 .searcharea > input {
   width: 100%;
+  font-size: initial;
 }
 ::placeholder {
   color: #ccc;
