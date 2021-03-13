@@ -1,0 +1,211 @@
+.description {
+    padding: 0 20px;
+}
+
+.description>h2 {
+    margin: 20px 0 10px;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #888;
+}
+
+.description>h3 {
+    margin: 20px 10px 0;
+
+}
+
+pre {
+    font-size: 0.5em;
+    font-weight: 100;
+    margin: 10px;
+}
+
+.description>p {
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    line-height: 1.6;
+    font-weight: 100;
+    background-color: #f0f0f0;
+}
+
+.description>p.preface {
+    margin: 25px 10px;
+    background-color: #d0d0d0;
+    font-size: 1em;
+    line-height: 2;
+    font-weight: 400;
+}
+
+.description>img {
+    margin: 10px;
+    height: auto;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    padding: 2px;
+    border: 1px solid #aaa;
+    vertical-align: middle;
+}
+
+.description>table {
+    margin: 10px;
+    height: auto;
+    width: calc(100% - 20px);
+    text-align: center;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    border: 2px solid #aaa;
+}
+
+.description>table td {
+    border: 1px solid #aaa;
+}
+
+.description>ol,
+.description>ul {
+    margin: 10px;
+    padding: 5px 10px 5px 30px;
+    font-size: 0.9em;
+    font-weight: 100;
+    background-color: #f0f0f0;
+}
+
+.description>ol>li,
+.description>ul>li {
+    padding: 3px 0;
+    line-height: 1.6;
+}
+
+.description>p span,
+.description>ul span,
+.description>ol span {
+    display: inline-block;
+    margin: 1px 3px;
+    box-sizing: border-box;
+    padding: 0px 4px;
+    color: #f92472;
+    background-color: #f4dfe5;
+    border-radius: 10px;
+    font-weight: 300;
+
+}
+
+.description>ul.link {
+    margin: 50px 0;
+    padding: 10px 0 0 20px;
+    font-size: 1em;
+    font-weight: 300;
+    background-color: transparent;
+    border-top: 2px solid #888;
+    list-style-position: inside;
+}
+
+.description>ul.link>li {
+    vertical-align: middle;
+    margin: 10px 0;
+}
+
+.description>ul.link>li img {
+    vertical-align: middle;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .description {
+        margin: 0 auto;
+        padding: 0;
+        max-width: 800px;
+    }
+
+    .description>h2 {
+        margin-top: 30px;
+    }
+
+    .description>img,
+    .description>table {
+        max-width: 100%;
+    }
+
+    pre {
+        font-size: 1em;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*文字區*/
+.text {
+    margin: 10px;
+    padding: 3px;
+}
+
+/*標題*/
+.text>h2 {
+    margin: 5px 15px;
+    border-bottom: 1px solid #888;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.4em;
+    font-weight: 500;
+}
+
+.text>p {
+    margin: 5px 15px;
+    padding: 5px;
+    font-size: 0.9em;
+    line-height: 1.6;
+    font-weight: 100;
+}
+
+/*附註*/
+.text>h4 {
+    margin: 20px 15px 10px;
+    padding: 5px;
+    width: 100px;
+    border-bottom: 1px solid #888;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.4em;
+    font-weight: 400;
+}
+
+.text>ul {
+    margin: 10px 15px;
+    list-style: none;
+}
+
+.text>ul>li {
+    margin: 10px;
+}
+
+.text>ul>li>img {
+    vertical-align: middle;
+}
+
+.text>ul>li>span {
+    font-size: 0.9em;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .text {
+        margin: 0;
+        margin-left: 10px;
+        width: 40%;
+        max-width: 400px;
+    }
+
+}

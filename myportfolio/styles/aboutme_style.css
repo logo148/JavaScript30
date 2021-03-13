@@ -1,169 +1,184 @@
 /*banner*/
 .banner {
-	margin: auto;
-	text-align: center;
-	background-image: linear-gradient(25deg, #244865, #4ca8e6);
+    margin: auto;
+    text-align: center;
+    background-image: linear-gradient(25deg, #244865, #4ca8e6);
 }
 
 .container {
-	color: snow;
+    color: snow;
 }
-.container > img {
-	margin: 10px;
-	width: 100px;
-	vertical-align: middle;
+
+.container>img {
+    margin: 10px;
+    width: 100px;
+    color: transparent;
+    vertical-align: middle;
 }
+
 /*簡介*/
 .brief {
-	margin: 0 30px 20px;
-	font-size: 10px;
-	vertical-align: middle;
-	font-weight: 100;
+    margin: 0 30px 20px;
+    font-size: 10px;
+    vertical-align: middle;
+    font-weight: 100;
 }
 
-.brief > h2 {
-	margin-bottom: 15px;
-	font-size: 20px;
+.brief>h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
 }
 
-.brief > p {
-	font-size: 1.5em;
-	line-height: 1.4;
-	text-align: left;
-  	font-weight: 400;
+.brief>p {
+    font-size: 1.5em;
+    line-height: 1.4;
+    text-align: left;
+    font-weight: 400;
 }
 
-.brief > blockquote {
-	margin-top: 10px;
-	font-size: 1.2em;
-	font-weight: 300;
-	text-align: left;
+.brief>blockquote {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: 300;
+    text-align: left;
 }
+
 /*聯絡資訊*/
 .contact {
-	border-top: 2px solid #f7f7f7;
+    border-top: 2px solid #f7f7f7;
+    list-style: none;
 }
 
-.contact > li {
-	display: inline-block;
-	margin: 10px auto 15px;
+.contact>li {
+    display: inline-block;
+    margin: 10px auto 15px;
 }
 
-.contact > li > span {
-	padding: 0 5px;
-	font-size: 0.6em;
-	font-weight: 300;
+.contact>li>span {
+    padding: 0 5px;
+    font-size: 0.6em;
+    font-weight: 300;
 }
 
-.contact > li > img{
-	vertical-align: middle;
+.contact>li>img {
+    vertical-align: middle;
+    color: transparent;
 }
+
 /*內容區*/
 .intro {
-	padding: 20px;
-	font-weight: 100;
-}
-/*標題*/
-.intro > img{
-	vertical-align: middle;
+    padding: 20px;
+    font-weight: 100;
 }
 
-.intro > h2 {
-	display: inline;
-	margin-left: 10px;
-	width: auto;
-	color: #224663;
-	font-weight: 500;
-	vertical-align: bottom;
+/*標題*/
+.intro>img {
+    vertical-align: middle;
+    color: transparent;
 }
+
+.intro>h2 {
+    display: inline;
+    margin-left: 10px;
+    width: auto;
+    color: #224663;
+    font-weight: 500;
+    vertical-align: bottom;
+}
+
 /*標籤*/
 .tags {
-	margin-left: 40px;
-	font-weight: 400;
+    margin-left: 40px;
+    font-weight: 400;
 }
 
-.tags > span {
-	display: inline-block;
-	margin: 3px 10px 3px 3px;
-	padding: 2px;
-	border-radius: 3px;
-	color: #fff;
-	font-size: 0.8em;
-	background-color: #6cb7eb;
+.tags>span {
+    display: inline-block;
+    margin: 3px 10px 3px 3px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 0.8em;
+    background-color: #6cb7eb;
 }
+
 /*內文*/
-.intro > p {
-	border-left: 3px solid #ccc;
-	margin: 10px 10px 30px 14px;
-	padding: 10px 10px 10px 23px;
-  	line-height: 1.6;
-  	font-weight: 400;
-}
-/*列表*/
-.intro > ol{
-	border-left: 3px solid #ccc;
-	margin: 0 0 30px 14px;
-	padding-left: 23px;
-	font-weight: 300;
+.intro>p {
+    border-left: 3px solid #ccc;
+    margin: 10px 10px 30px 14px;
+    padding: 10px 10px 10px 23px;
+    line-height: 1.6;
+    font-weight: 400;
+    text-indent: 2em;
 }
 
-.intro > ol > li {
-	padding: 2px;
+/*列表*/
+.intro>ol {
+    border-left: 3px solid #ccc;
+    margin: 0 0 30px 14px;
+    padding-left: 23px;
+    font-weight: 300;
+}
+
+.intro>ol>li {
+    padding: 2px;
 }
 
 /*導覽列*/
-nav > a:nth-child(1) {
-  font-weight: 500;
-  color: #f0437e;
-  border-bottom: 2px solid #f0437e;
+nav>a:nth-child(1) {
+    font-weight: 500;
+    color: #f0437e;
+    border-bottom: 2px solid #f0437e;
 }
+
 /*RWD*/
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
 
-	.banner {
-		padding: 20px;
-		text-align: left;
-	}
+    .banner {
+        padding: 20px;
+        text-align: left;
+    }
 
-	.container{
-		margin: 0 auto;
-		max-width: 800px;
-	}
+    .container {
+        margin: 0 auto;
+        max-width: 800px;
+    }
 
-	.brief {
-		display: inline-block;
-		margin: 20px 20px 20px 10px;
-		max-width: 60%;
-	}
+    .brief {
+        display: inline-block;
+        margin: 20px 20px 20px 10px;
+        max-width: 60%;
+    }
 
-	.contact {
-		display: inline-block;
-		border: none;
-		vertical-align: middle;
-		background-color: transparent;
-	}
+    .contact {
+        display: inline-block;
+        border: none;
+        vertical-align: middle;
+        background-color: transparent;
+    }
 
-	.intro {
-		/*padding: 30px;*/
-		margin: auto;
-		max-width: 800px;
-	}
+    .intro {
+        /*padding: 30px;*/
+        margin: auto;
+        max-width: 800px;
+    }
 
- 	nav a:nth-child(1) {
+    nav a:nth-child(1) {
 
-		border-bottom: none;
- 	}
+        border-bottom: none;
+    }
 }
+
 /*RWD banner*/
-@media screen and (min-width: 1094px){
+@media screen and (min-width: 1094px) {
 
-	.contact {
-		padding-left: 20px;
-		border-left: 1px solid snow;
-	}
+    .contact {
+        padding-left: 20px;
+        border-left: 1px solid snow;
+    }
 
-	.contact > li {
-		display: block;
-	}
-	
+    .contact>li {
+        display: block;
+    }
+
 }

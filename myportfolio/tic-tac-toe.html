@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="styles/my_style.css">
     <link rel="stylesheet" href="styles/submenu_style.css">
     <link rel="stylesheet" href="styles/tic-tac-toe_style.css">
+    <link rel="stylesheet" href="styles/description_style.css">
+    <link rel="stylesheet" href="styles/monokai-sublime.css">
+    <script src="scripts/highlight.pack.js"></script>
+    <script src="scripts/code-line.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>CodeLine.initOnPageLoad()</script>
 </head>
 
 <body>
@@ -25,15 +31,14 @@
     <div class="content">
         <ul class="idTabs">
             <li><a href="#present">作品展示</a></li>
-            <li><a href="#html">HTML</a></li>
-            <li><a href="#css">CSS</a></li>
+            <li><a href="#htmlandcss">HTML&CSS</a></li>
             <li><a href="#js">Javascript</a></li>
         </ul>
         <div class="cases" id="present">
             <div class="mainzone">
                 <h2 id="titlearea">　</h2>
                 <div id="gamearea">
-                    <canvas id="winnerLine" width="290" height="290"></canvas>
+                    <canvas id="winnerline" width="290" height="290"></canvas>
                     <table>
                         <tr>
                             <td class="top left"><canvas class="draw" id="a0" width="90" height="90"></canvas></td>
@@ -55,26 +60,566 @@
             </div>
             <div class="text">
                 <h2>井字遊戲</h2>
-                <p>canvas，自寫語法判斷所有贏法，優先取勝，次優先阻擋玩家獲勝，並以快速連線為目標。</p>
+                <p>直接在九宮格內點擊即可開始遊戲，使用Canvas API在九宮格中繪圖，並加入簡易的指令碼讓電腦判斷如何選擇下一步，以優先取勝並阻擋玩家獲勝為目標，遊戲中可隨時點擊上方訊息欄位來重置遊戲。</p>
                 <h4>使用工具</h4>
                 <ul>
-                    <li>
-                        <img src="images/skills/html0.jpg" width="30"><span>HTML</span>
-                    </li>
-                    <li>
-                        <img src="images/skills/css0.jpg" width="30"><span>CSS</span>
-                    </li>
-                    <li>
-                        <img src="images/skills/javascript0.jpg" width="30"><span>JavaScript</span>
-                    </li>
+                    <li><img src="images/skills/html0.jpg" width="30"><span>HTML</span></li>
+                    <li><img src="images/skills/css0.jpg" width="30"><span>CSS</span></li>
+                    <li><img src="images/skills/javascript0.jpg" width="30"><span>JavaScript</span></li>
                 </ul>
             </div>
         </div>
-        <div class="cases" id="html">
+        <div class="cases description" id="htmlandcss">
+            <h2>1.九宮格的佈置</h2>
+            <p class="preface">井字遊戲的「◯」、「╳」需要繪製於九宮格的九個區域，因此使用<span>&#x3C;table&#x3E;</span>標籤建立九宮格，再將每個<span>&#x3C;td&#x3E;</span>標籤上分別放置一個<span>&#x3C;canvas&#x3E;</span>標籤來作圖。</p>
+            <img src="images/web/tic-tac-toe_001.jpg">
+            <h3>HTML：</h3>
+            <pre><code class="language-html">
+                &#x3C;table&#x3E;
+                    &#x3C;tr&#x3E;
+                        &#x3C;td class=&#x22;top left&#x22;&#x3E;&#x3C;/td&#x3E;&#x3C;td class=&#x22;top center&#x22;&#x3E;&#x3C;/td&#x3E;&#x3C;td class=&#x22;top right&#x22;&#x3E;&#x3C;/td&#x3E;
+                    &#x3C;/tr&#x3E;
+                    &#x3C;tr&#x3E;
+                        &#x3C;td class=&#x22;middle left&#x22;&#x3E;&#x3C;/td&#x3E;&#x3C;td class=&#x22;middle center&#x22;&#x3E;&#x3C;/td&#x3E;&#x3C;td class=&#x22;middle right&#x22;&#x3E;&#x3C;/td&#x3E;
+                    &#x3C;/tr&#x3E;
+                    &#x3C;tr&#x3E;
+                        &#x3C;td class=&#x22;bottom left&#x22;&#x3E;&#x3C;/td&#x3E;&#x3C;td class=&#x22;bottom center&#x22;&#x3E;&#x3C;/td&#x3E;&#x3C;td class=&#x22;bottom right&#x22;&#x3E;&#x3C;/td&#x3E;
+                    &#x3C;/tr&#x3E;
+                &#x3C;/table&#x3E;
+            </code></pre>
+            <p>將每個<span>&#x3C;td&#x3E;</span>放上一個<span>&#x3C;canvas&#x3E;</span>，並設定尺寸。</p>
+            <pre><code class="language-html">
+                &#x3C;td class=&#x22;top left&#x22;&#x3E;
+                    &#x3C;canvas class=&#x22;draw&#x22; id=&#x22;a0&#x22; width=&#x22;90&#x22; height=&#x22;90&#x22;&#x3E;&#x3C;/canvas&#x3E;
+                &#x3C;/td&#x3E;
+            </code></pre>
+            <h3>CSS：</h3>
+            <p>主要是設定「井字」的線寬，使用<span>border-collapse: collapse;</span>來讓每個<span>&#x3C;td&#x3E;</span>的線寬與相鄰的<span>&#x3C;td&#x3E;</span>線寬合併，能更一致地控制線寬。</p>
+            <pre><code class="language-css">
+                table {
+                    position: relative;
+                    border-collapse: collapse;
+                }
+                td.middle, td.center{
+                    border-style: solid;
+                    border-color: rgb(84, 84, 84);
+                }
+                td.middle {
+                    border-width: 10px 0px;
+                }
+                td.center {
+                    border-width: 0px 10px;
+                }
+                td.middle.center{
+                    border-width: 10px 10px;
+                }
+            </code></pre>
+            <h2>2.繪製連線區域的佈置</h2>
+            <p class="preface">有勝利者時會需要繪製連線，因此再建立一個<span>&#x3C;canvas&#x3E;</span>標籤，並將此<span>&#x3C;canvas&#x3E;</span>與整個<span>&#x3C;table&#x3E;</span>重疊。</p>
+            <img src="images/web/tic-tac-toe_002.jpg">
+            <h3>HTML：</h3>
+            <p><span>&#x3C;canvas&#x3E;</span>放置於<span>&#x3C;table&#x3E;</span>前，初始時不會被點擊到。</p>
+            <pre><code class="language-html">
+                &#x3C;div id=&#x22;gamearea&#x22;&#x3E;
+                    &#x3C;canvas id=&#x22;winnerline&#x22; width=&#x22;290&#x22; height=&#x22;290&#x22;&#x3E;&#x3C;/canvas&#x3E;
+                    &#x3C;table&#x3E;&#x3C;/table&#x3E;
+                &#x3C;/div&#x3E;
+            </code></pre>
+            <h3>CSS：</h3>
+            <p>使用絕對定位<span>position: absolute;</span>，讓此<span>&#x3C;canvas&#x3E;</span>與整個<span>&#x3C;table&#x3E;</span>重疊。</p>
+            <pre><code class="language-css">
+                canvas#winnerline {
+                    position: absolute;
+                    display: block;
+                    cursor: pointer;
+                }
+            </code></pre>
+            <ul class="link">
+                <li><a target="_blank" href="https://github.com/logo148/myportfolio/blob/gh-pages/tic-tac-toe.html"><img src="images/skills/html0.jpg" width="30">完整HTML</a></li>
+                <li><a target="_blank" href="https://github.com/logo148/myportfolio/blob/gh-pages/styles/tic-tac-toe.css"><img src="images/skills/css0.jpg" width="30">完整CSS</a></li>
+            </ul>
         </div>
-        <div class="cases" id="css">
-        </div>
-        <div class="cases" id="js">
+        <div class="cases description" id="js">
+            <h2>1.九宮格的狀態儲存</h2>
+            <p class="preface">建立一個長度為9的陣列，每個元素依序存放九宮格（由左上至右下）的id名稱與狀態。</p>
+            <img src="images/web/tic-tac-toe_003.jpg">
+            <h3>Javascript：</h3>
+            <ul>
+                <li><span>id屬性</span>儲存<span>&#x3C;canvas&#x3E;</span>的id名稱。</li>
+                <li><span>status屬性</span>是用來表示遊戲當下該格佔領的狀態：有"user"、"computer"或是"none"三種狀態。</li>
+            </ul>
+            <pre><code class="language-javascript">
+            &#x9;var allDesks = [{ id: &#x22;a0&#x22;, status: &#x22;none&#x22; }, { id: &#x22;a1&#x22;, status: &#x22;none&#x22; }, { id: &#x22;a2&#x22;, status: &#x22;none&#x22; },
+            &#x9;&#x9;&#x9;&#x9;&#x9;{ id: &#x22;b0&#x22;, status: &#x22;none&#x22; }, { id: &#x22;b1&#x22;, status: &#x22;none&#x22; }, { id: &#x22;b2&#x22;, status: &#x22;none&#x22; },
+            &#x9;&#x9;&#x9;&#x9;&#x9;{ id: &#x22;c0&#x22;, status: &#x22;none&#x22; }, { id: &#x22;c1&#x22;, status: &#x22;none&#x22; }, { id: &#x22;c2&#x22;, status: &#x22;none&#x22; }];
+            </code></pre>
+            <h2>2.連線條件的狀態儲存</h2>
+            <p class="preface">為了讓電腦判斷取勝方式，再建立一個陣列儲存所有8種連線的條件，每個元素裡儲存該條件代表的「索引陣列」、使用者與電腦分別「佔領的格數」，以及給電腦判斷選擇的「優先度」。</p>
+            <img src="images/web/tic-tac-toe_004.jpg">
+            <h3>Javascript：</h3>
+            <ul>
+                <li><span>case屬性</span>儲存該連線條件所代表的索引陣列</li>
+                <li><span>user屬性</span>與<span>computer屬性</span>分別儲存遊戲當下該條件所佔的格數，值為0~2（佔領3格即結束遊戲，不考慮此情況）</li>
+                <li><span>priority屬性</span>會依據<span>user</span>與<span>computer</span>所佔格數來計算此條件所代表的優先度（稍後說明）</li>
+            </ul>
+            <pre><code class="language-javascript">
+            &#x9;var allCases = [{
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;case: [0, 1, 2],
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;user: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;computer: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;priority: 0
+            &#x9;&#x9;&#x9;&#x9;&#x9;},
+            &#x9;&#x9;&#x9;&#x9;&#x9;{
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;case: [0, 3, 6],
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;user: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;computer: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;priority: 0
+            &#x9;&#x9;&#x9;&#x9;&#x9;},
+            &#x9;&#x9;&#x9;&#x9;&#x9;{
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;case: [0, 4, 8],
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;user: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;computer: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;priority: 0
+            &#x9;&#x9;&#x9;&#x9;&#x9;},
+            &#x9;&#x9;&#x9;&#x9;&#x9;{
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;case: [1, 4, 7],
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;user: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;computer: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;priority: 0
+            &#x9;&#x9;&#x9;&#x9;&#x9;},
+            &#x9;&#x9;&#x9;&#x9;&#x9;{
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;case: [2, 4, 6],
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;user: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;computer: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;priority: 0
+            &#x9;&#x9;&#x9;&#x9;&#x9;},
+            &#x9;&#x9;&#x9;&#x9;&#x9;{
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;case: [2, 5, 8],
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;user: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;computer: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;priority: 0
+            &#x9;&#x9;&#x9;&#x9;&#x9;},
+            &#x9;&#x9;&#x9;&#x9;&#x9;{
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;case: [3, 4, 5],
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;user: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;computer: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;priority: 0
+            &#x9;&#x9;&#x9;&#x9;&#x9;},
+            &#x9;&#x9;&#x9;&#x9;&#x9;{
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;case: [6, 7, 8],
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;user: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;computer: 0,
+            &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;priority: 0
+            &#x9;&#x9;&#x9;&#x9;&#x9;}];
+            </code></pre>
+            <h2>3.使用者與電腦的回合</h2>
+            <p class="preface">將每個<span>&#x3C;td&#x3E;</span>標籤裡的<span>&#x3C;canvas&#x3E;</span>設定事件監聽，使用者點擊和電腦選擇格子後則在<span>&#x3C;canvas&#x3E;</span>上作圖，並更新「九宮格」與「連線條件」的儲存狀態。</p>
+            <h3>Javascript：</h3>
+            <p>使用者回合的執行順序：</p>
+            <ol>
+                <li>確認是使用者的回合</li>
+                <li>確認使用者點擊的格子未被占領</li>
+                <li>作圖與更新「九宮格」與「連線條件」的儲存狀態</li>
+                <li>結果判斷</li>
+                <li>跳至電腦回合</li>
+            </ol>
+            <pre><code class="language-javascript">
+            &#x9;var isMyTurn = true;
+            &#x9;var canvas = document.querySelectorAll(&#x22;.draw&#x22;);
+
+            &#x9;canvas.forEach( canva =&#x3E; canva.addEventListener(&#x22;click&#x22;, userRound, false) );
+
+            &#x9;function userRound() {
+            &#x9;&#x9;var player = &#x22;user&#x22;;
+            &#x9;&#x9;var index = idTransIndex(this.id);
+
+            &#x9;&#x9;if (!isMyTurn) return;
+            &#x9;&#x9;if (allDesks[index].status == &#x22;none&#x22;){
+            &#x9;&#x9;&#x9;drawCircle(this);
+            &#x9;&#x9;&#x9;refreshAllStatus(player, index);
+            &#x9;&#x9;&#x9;if (result()) return;
+            &#x9;&#x9;&#x9;isMyTurn = !isMyTurn;
+            &#x9;&#x9;&#x9;setTimeout(computerRound, 200);
+            &#x9;&#x9;}
+            &#x9;&#x9; return;
+            &#x9;}
+
+            &#x9;function idTransIndex(id) {
+            &#x9;&#x9;var idArray = [];
+
+            &#x9;&#x9;for (var i = 0; i &#x3C; allDesks.length; i++) {
+            &#x9;&#x9;&#x9;idArray.push(allDesks[i].id);
+            &#x9;&#x9;}
+            &#x9;&#x9;return idArray.indexOf(id);
+            &#x9;}
+            </code></pre>
+            <p>電腦回合的執行順序：</p>
+            <ol>
+                <li>接收「電腦選擇的處理函式」的回傳結果</li>
+                <li>作圖與更新「九宮格」與「連線條件」的儲存狀態</li>
+                <li>結果判斷</li>
+            </ol>
+            <pre><code class="language-javascript">
+            &#x9;function computerRound() {
+            &#x9;&#x9;var player = &#x22;computer&#x22;;
+            &#x9;&#x9;var index = computerChoose();
+            &#x9;&#x9;var desk = document.getElementById(allDesks[index].id);
+
+            &#x9;&#x9;drawCross(desk);
+            &#x9;&#x9;refreshAllStatus(player, index);
+            &#x9;&#x9;if (result()) return;
+            &#x9;&#x9;isMyTurn = !isMyTurn;
+            &#x9;}
+            </code></pre>
+            <h2>4.更新儲存狀態</h2>
+            <p class="preface">每回合進行完，呼叫函式來更新「九宮格」與「連線條件」的儲存狀態。</p>
+            <h3>Javascript：</h3>
+            <ul>
+                <li>更新九宮格<span>allDesks陣列</span>裡該格的<span>status屬性</span></li>
+                <li>更新連線條件<span>allCases陣列</span>裡對應的<span>user屬性</span>或<span>computer屬性</span>，佔領格數加1</li>
+                <li>更新連線條件<span>allCases陣列</span>裡的<span>priority屬性</span>（稍後說明）</li>
+            </ul>
+            <pre><code class="language-javascript">
+            &#x9;function refreshAllStatus(player, index) {
+            &#x9;&#x9;allDesks[index].status = player;
+            &#x9;&#x9;for (var i = 0; i &#x3C; allCases.length; i++) {
+            &#x9;&#x9;&#x9;if( allCases[i].case.indexOf(index) &#x3E;= 0 ) {
+            &#x9;&#x9;&#x9;&#x9;allCases[i][player]++;
+            &#x9;&#x9;&#x9;}
+            &#x9;&#x9;}
+            &#x9;&#x9;for (var i = 0; i &#x3C; allCases.length; i++) {
+            &#x9;&#x9;&#x9;allCases[i].priority = priorityCalc(allCases[i].user, allCases[i].computer);
+            &#x9;&#x9;}
+            &#x9;}
+            </code></pre>
+            <h2>5.連線條件的優先度計算</h2>
+            <p class="preface">設計一個數學公式能依據玩家與電腦在該連線條件下所佔的格數，計算出優先度，來讓電腦決定應該優先取得哪種連線條件。</p>
+            <table>
+                <tr>
+                    <td>情況</td><td>玩家格數</td><td>電腦格數</td><td>說明</td><td>優先度</td>
+                </tr>
+                <tr>
+                    <td>Ａ</td><td>０</td><td>２</td><td>電腦已聽牌，下一步直接連線</td><td>5</td>
+                </tr>
+                <tr>
+                    <td>Ｂ</td><td>２</td><td>０</td><td>使用者已聽牌，阻擋使用者連線</td><td>４</td>
+                </tr>
+                <tr>
+                    <td>Ｃ</td><td>０</td><td>１</td><td>電腦佔領其中一格，且玩家未佔領其他格</td><td>３</td>
+                </tr>
+                <tr>
+                    <td>Ｄ</td><td>０</td><td>０</td><td>皆未有人佔領</td><td>２</td>
+                </tr>
+                <tr>
+                    <td>Ｅ</td><td>１</td><td>０</td><td>使用者已佔領其中一格，可防止使用者聽牌</td><td>１</td>
+                </tr>
+                <tr>
+                    <td>Ｆ</td><td>１</td><td>１</td><td>使用者、電腦皆佔領一格，不可能連線</td><td>０</td>
+                </tr>
+                <tr>
+                    <td>Ｇ</td><td>１</td><td>２</td><td>3格皆佔滿且沒有連線</td><td>０</td>
+                </tr>
+                <tr>
+                    <td>Ｈ</td><td>２</td><td>１</td><td>3格皆佔滿且沒有連線</td><td>０</td>
+                </tr>
+            </table>
+            <h3>Javascript：</h3>
+            <p>令玩家所佔的格數=a，電腦所佔的格數=b，帶入一個二元方程式可讓所有情況回傳值為優先度的高低數值。<br>（3格佔滿即結束遊戲，不需考慮此情況）</p>
+            <pre><code class="language-javascript">
+            &#x9;function priorityCalc(a, b) {
+            &#x9;&#x9;return ((b+1)*(0.5*b-2*a*(2-a))+a+2)*(1-0.5*a*b*(a-1));
+            &#x9;}
+            </code></pre>
+            <h2>6.電腦選擇的處理函式</h2>
+            <p class="preface">電腦從所有連線的條件中取出優先度最高的連線條件，將這些條件所代表的格子篩選出來，再從這些格子中隨機選則未被佔領的格子。</p>
+            <h3>Javascript：</h3>
+            <ol>
+                <li>找出當下所有條件最大優先度的值</li>
+                <li>篩選所有最大優先度所代表的格子</li>
+                <li>從這些格子中隨機挑選未被佔領的格子</li>
+                <li>回傳電腦選擇的格子索引值</li>
+            </ol>
+            <pre><code class="language-javascript">
+            &#x9;function computerChoose() {
+            &#x9;&#x9;var caseCandidate = [];
+            &#x9;&#x9;var maxpriority = 0;
+            &#x9;&#x9;var r;
+
+            &#x9;&#x9;for (var i = 0; i &#x3C; allCases.length ; i++) {
+            &#x9;&#x9;&#x9;if (allCases[i].priority &#x3E;= maxpriority) {
+            &#x9;&#x9;&#x9;&#x9;maxpriority = allCases[i].priority;
+            &#x9;&#x9;&#x9;}
+            &#x9;&#x9;}
+            &#x9;&#x9;for (var i = 0; i &#x3C; allCases.length ; i++) {
+            &#x9;&#x9;&#x9;if (allCases[i].priority == maxpriority) {
+            &#x9;&#x9;&#x9;&#x9;caseCandidate.push.apply(caseCandidate, allCases[i].case);
+            &#x9;&#x9;&#x9;}
+            &#x9;&#x9;}
+            &#x9;&#x9;do {
+            &#x9;&#x9;&#x9;r = Math.floor(Math.random() * caseCandidate.length);
+            &#x9;&#x9;}
+            &#x9;&#x9;while(allDesks[caseCandidate[r]].status != &#x22;none&#x22;);
+            &#x9;&#x9;return caseCandidate[r];
+            &#x9;}
+            </code></pre>
+            <h2>7.結果判斷</h2>
+            <p class="preface">判斷勝利者時的語法，主要是在九宮格出現同個玩家達到連線條件時，判斷出現勝利者。</p>
+            <h3>Javascript：</h3>
+            <p>為了方便處理九宮格的連線條件判斷，先建立一個函式將九宮格<span>allDesks陣列</span>裡每個格子的<span>status屬性</span>另外存放於一個3*3的二維陣列中。</p>
+            <pre><code class="language-javascript">
+            &#x9;function statusTransDArray() {
+            &#x9;&#x9;var statusDArray = [[],[],[]];
+            &#x9;&#x9;var index = 0;
+
+            &#x9;&#x9;for (var i = 0; i &#x3C; 3; i++) {
+            &#x9;&#x9;&#x9;for (var j = 0; j &#x3C; 3; j++){
+            &#x9;&#x9;&#x9;&#x9;statusDArray[i][j] = allDesks[index++].status;
+            &#x9;&#x9;&#x9;}
+            &#x9;&#x9;}
+            &#x9;&#x9;return statusDArray;
+            &#x9;}
+            </code></pre>
+
+            <p>使用迴圈判斷水平連線與垂直連線的勝利條件、if判斷斜向連線的勝利條件，有連線的話將勝利者設值給<span>winner變數</span>。</p>
+            <pre><code class="language-javascript">
+            &#x9;function result() {
+            &#x9;&#x9;var status = statusTransDArray(allDesks);
+            &#x9;&#x9;var winner; 
+
+            &#x9;&#x9;//&#x6C34;&#x5E73;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+            &#x9;&#x9;for (var i = 0; i &#x3C; 3; i++) {
+            &#x9;&#x9;&#x9;if ( (status[i][0] == status[i][1]) &#x26;&#x26; (status[i][1] == status[i][2]) &#x26;&#x26; (status[i][2] != &#x22;none&#x22;) ) {
+            &#x9;&#x9;&#x9;&#x9;winner = status[i][0];
+            &#x9;&#x9;&#x9;&#x9;break;
+            &#x9;&#x9;&#x9;}
+            &#x9;&#x9;}
+            &#x9;&#x9;//&#x5782;&#x76F4;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+            &#x9;&#x9;for (var i = 0; i &#x3C; 3; i++) {
+            &#x9;&#x9;&#x9;if ( (status[0][i] == status[1][i]) &#x26;&#x26; (status[1][i] == status[2][i]) &#x26;&#x26; (status[2][i] != &#x22;none&#x22;) ) {
+            &#x9;&#x9;&#x9;&#x9;winner = status[0][i];
+            &#x9;&#x9;&#x9;&#x9;break;
+            &#x9;&#x9;&#x9;}
+            &#x9;&#x9;}
+            &#x9;&#x9;//&#x659C;&#x5411;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+            &#x9;&#x9;if ( (status[0][0] == status[1][1]) &#x26;&#x26; (status[1][1] == status[2][2]) &#x26;&#x26; (status[2][2] != &#x22;none&#x22;) ) {
+            &#x9;&#x9;&#x9;winner = status[0][0];
+            &#x9;&#x9;} else if ( (status[2][0] == status[1][1]) &#x26;&#x26; (status[1][1] == status[0][2]) &#x26;&#x26; (status[0][2] != &#x22;none&#x22;) ) {
+            &#x9;&#x9;&#x9;winner = status[2][0];
+            &#x9;&#x9;}
+            &#x9;}
+            </code></pre>
+            <p class="preface">要在繪製連線的<span>&#x3C;canvas&#x3E;</span>上繪製連線，必須取得連線的(X, Y)座標。</p>
+            <h3>Javascript：</h3>
+            <ul>
+                <li>代入「單格」的長、寬<span>deskSize變數</span>與「井字線條」的寬度<span>border變數</span>，取得連線的(X, Y)座標</li>
+                <li>建立<span>start陣列</span>存放連線起點的(X, Y)座標</li>
+                <li>建立<span>end陣列</span>存放連線終點的(X, Y)座標</li>
+            </ul>
+            <pre><code class="language-javascript">
+            &#x9;var deskSize = 90;
+            &#x9;var border = 10;
+
+            &#x9;function result() {
+            &#x9;&#x9;var status = statusTransDArray(allDesks);
+            &#x9;&#x9;var winner; 
+            &#x9;&#x9;var start = [];
+            &#x9;&#x9;var end = [];
+
+            &#x9;&#x9;for (var i = 0; i &#x3C; 3; i++) {
+            &#x9;&#x9;&#x9;if ( (status[i][0] == status[i][1]) &#x26;&#x26; (status[i][1] == status[i][2]) &#x26;&#x26; (status[i][2] != &#x22;none&#x22;) ) {
+            &#x9;&#x9;&#x9;&#x9;start = [0, (deskSize * 0.5) + (deskSize + border) * i];
+            &#x9;&#x9;&#x9;&#x9;end = [(deskSize * 3) + border * 2, (deskSize * 0.5) + (deskSize + border) * i];
+            &#x9;&#x9;&#x9;&#x9;winner = status[i][0];
+            &#x9;&#x9;&#x9;&#x9;break;
+            &#x9;&#x9;&#x9;}
+            &#x9;&#x9;}
+            &#x9;&#x9;for (var i = 0; i &#x3C; 3; i++) {
+            &#x9;&#x9;&#x9;if ( (status[0][i] == status[1][i]) &#x26;&#x26; (status[1][i] == status[2][i]) &#x26;&#x26; (status[2][i] != &#x22;none&#x22;) ) {
+            &#x9;&#x9;&#x9;&#x9;start = [(deskSize * 0.5) + (deskSize + border) * i, 0];
+            &#x9;&#x9;&#x9;&#x9;end = [(deskSize * 0.5) + (deskSize + border) * i, (deskSize * 3) + border * 2];
+            &#x9;&#x9;&#x9;&#x9;winner = status[0][i];
+            &#x9;&#x9;&#x9;&#x9;break;
+            &#x9;&#x9;&#x9;}
+            &#x9;&#x9;}
+            &#x9;&#x9;if ( (status[0][0] == status[1][1]) &#x26;&#x26; (status[1][1] == status[2][2]) &#x26;&#x26; (status[2][2] != &#x22;none&#x22;) ) {
+            &#x9;&#x9;&#x9;start = [deskSize*0.1, deskSize*0.1];
+            &#x9;&#x9;&#x9;end = [(deskSize * 2.9) + border * 2, (deskSize * 2.9) + border * 2];
+            &#x9;&#x9;&#x9;winner = status[0][0];
+            &#x9;&#x9;} else if ( (status[2][0] == status[1][1]) &#x26;&#x26; (status[1][1] == status[0][2]) &#x26;&#x26; (status[0][2] != &#x22;none&#x22;) ) {
+            &#x9;&#x9;&#x9;start = [deskSize*0.1, (deskSize * 2.9) + border * 2];
+            &#x9;&#x9;&#x9;end = [(deskSize * 2.9) + border * 2, deskSize*0.1];
+            &#x9;&#x9;&#x9;winner = status[2][0];
+            &#x9;&#x9;}
+            &#x9;}
+            </code></pre>
+            <p class="preface">最後加上判斷結果的函式，回傳true/false來判斷遊戲是否結束遊戲了。</p>
+            <h3>Javascript：</h3>
+            <p>透過<span>allDesks陣列</span>裡每個格子的<span>status屬性</span>來判斷是否結束遊戲，順序為：</p>
+            <ol>
+                <li><span>winner變數</span>判斷是否有勝利者，有則繪製連線，並回傳true，遊戲結束</li>
+                <li>排除有勝利者的情況，判斷遊戲未結束的話，回傳false，遊戲繼續</li>
+                <li>其它情況表示平手，回傳true，遊戲結束</li>
+            </ol>
+            <p>有了遊戲結果之後，將繪製連線的<span>&#x3C;canvas&#x3E;</span>設定CSS的<span>z-index屬性</span>，讓使用者可以點擊到該元件來重置遊戲。</p>
+            <pre><code class="language-javascript">
+            &#x9;var lineCanvas = document.querySelector(&#x22;#winnerline&#x22;);
+
+            &#x9;function result() {
+            &#x9;&#x9;var statusArray = [];
+            &#x9;&#x9;var start = [];
+            &#x9;&#x9;var end = [];
+            &#x9;&#x9;var winner;
+
+            &#x9;&#x9;//&#xFF08;&#x7701;&#x7565;&#xFF09;&#x5224;&#x65B7;&#x52DD;&#x5229;&#x8005;&#x6642;&#x7684;&#x8A9E;&#x6CD5;&#x8207;&#x9023;&#x7DDA;&#x7684;(X, Y)&#x5EA7;&#x6A19;
+
+            &#x9;&#x9;for (var i = 0; i &#x3C; allDesks.length; i++) {
+            &#x9;&#x9;&#x9;statusArray.push(allDesks[i].status);
+            &#x9;&#x9;}
+            &#x9;&#x9;if (winner != null) {
+            &#x9;&#x9;&#x9;drawLine(winner, start, end);
+            &#x9;&#x9;} else if (statusArray.indexOf(&#x22;none&#x22;) &#x3E;= 0) {
+            &#x9;&#x9;&#x9;return false;
+            &#x9;&#x9;}
+            &#x9;&#x9;lineCanvas.style.setProperty(&#x22;z-index&#x22;, &#x22;2&#x22;);
+            &#x9;&#x9;return true;
+            &#x9;}
+            </code></pre>
+            <h2>8.繪製Canvas圖形</h2>
+            <p class="preface">一共要建立三個函式：繪製「◯」、繪製「╳」以及繪製「連線」。</p>
+            <h3>Javascript：</h3>
+            <p>繪製「◯」與繪製「╳」的函式，參數為點擊的<span>&#x3C;canvas&#x3E;</span>：</p>
+            <pre><code class="language-javascript">
+            &#x9;function drawCircle(desk) {
+            &#x9;&#x9;var context = desk.getContext(&#x22;2d&#x22;);
+
+            &#x9;&#x9;context.lineWidth = deskSize*0.15;
+            &#x9;&#x9;context.strokeStyle = &#x22;rgba(179, 30, 24, 0.9)&#x22;;
+            &#x9;&#x9;context.lineCap = &#x22;round&#x22;;
+            &#x9;&#x9;context.beginPath();
+            &#x9;&#x9;context.arc(desk.width*0.5, desk.height*0.5, desk.width*0.3, (0 * Math.PI)/180, (360 * Math.PI)/180, true);
+            &#x9;&#x9;context.stroke();
+            &#x9;}
+            </code></pre>
+            <pre><code class="language-javascript">
+            &#x9;function drawCross(desk) {
+            &#x9;&#x9;var context = desk.getContext(&#x22;2d&#x22;);
+
+            &#x9;&#x9;context.lineWidth = deskSize*0.15;
+            &#x9;&#x9;context.strokeStyle = &#x22;rgba(34, 101, 144, 0.9)&#x22;;
+            &#x9;&#x9;context.lineCap = &#x22;round&#x22;;
+            &#x9;&#x9;context.beginPath();
+            &#x9;&#x9;context.moveTo(desk.width*0.75, desk.height*0.25);
+            &#x9;&#x9;context.lineTo(desk.width*0.25, desk.height*0.75);
+            &#x9;&#x9;context.stroke();
+            &#x9;&#x9;context.beginPath();
+            &#x9;&#x9;context.moveTo(desk.width*0.25, desk.height*0.25);
+            &#x9;&#x9;context.lineTo(desk.width*0.75, desk.height*0.75);
+            &#x9;&#x9;context.stroke();
+            &#x9;}
+            </code></pre>
+            <p>繪製「連線」的函式：</p>
+            <ul>
+                <li><span>winner參數</span>用來設定連線的顏色</li>
+                <li><span>start參數</span>與<span>end參數</span>為連線的起、終點(X, Y)座標</li>
+            </ul>
+            <pre><code class="language-javascript">
+            &#x9;function drawLine(winner, start, end) {
+            &#x9;&#x9;var context = lineCanvas.getContext(&#x22;2d&#x22;);
+
+            &#x9;&#x9;context.lineWidth = deskSize*0.2;
+            &#x9;&#x9;if (winner == user) {
+            &#x9;&#x9;&#x9;context.strokeStyle = &#x22;rgb(179, 30, 24)&#x22;;
+            &#x9;&#x9;} else {
+            &#x9;&#x9;&#x9;context.strokeStyle = &#x22;rgb(34, 101, 144)&#x22;;
+            &#x9;&#x9;}
+            &#x9;&#x9;context.lineCap = &#x22;butt&#x22;;
+            &#x9;&#x9;context.beginPath();
+            &#x9;&#x9;context.moveTo(start[0], start[1]);
+            &#x9;&#x9;context.lineTo(end[0], end[1]);
+            &#x9;&#x9;context.stroke();
+            &#x9;}
+            </code></pre>
+            <h2>9.重置遊戲的函式</h2>
+            <p class="preface">網頁載入時與遊戲結束時點擊執行。</p>
+            <h3>Javascript：</h3>
+            <ol>
+                <li>重置九宮格的狀態</li>
+                <li>重置連線條件的狀態</li>
+                <li>清空所有<span>&#x3C;canvas&#x3E;</span></li>
+                <li>重置繪製連線的<span>&#x3C;canvas&#x3E;</span>的<span>z-index屬性</span>，不讓使用者點擊到該元件</li>
+                <li>交換遊戲順序：由上局敗者先攻
+                <li>設定事件處理監聽此函式</li>
+            </ol>
+            <pre><code class="language-javascript">
+            &#x9;var isMyTurn = false;
+            &#x9;var canvas = document.querySelectorAll(&#x22;.draw&#x22;);
+            &#x9;var lineCanvas = document.querySelector(&#x22;#winnerline&#x22;);
+
+            &#x9;lineCanvas.addEventListener(&#x22;click&#x22;, reset, false);
+            &#x9;reset();
+
+            &#x9;function reset() {
+            &#x9;&#x9;for (var i = 0; i &#x3C; 9; i++) {
+            &#x9;&#x9;&#x9;allDesks[i].status = &#x22;none&#x22;;
+            &#x9;&#x9;}
+            &#x9;&#x9;for (var i = 0; i &#x3C; 8; i++) {
+            &#x9;&#x9;&#x9;allCases[i].user = 0;
+            &#x9;&#x9;&#x9;allCases[i].computer = 0;
+            &#x9;&#x9;&#x9;allCases[i].priority = 0;
+            &#x9;&#x9;}
+            &#x9;&#x9;canvas.forEach( canva =&#x3E; clearCanvas(canva) );
+            &#x9;&#x9;clearCanvas(lineCanvas);
+            &#x9;&#x9;lineCanvas.style.setProperty(&#x22;z-index&#x22;, &#x22;-1&#x22;);
+            &#x9;&#x9;isMyTurn = !isMyTurn;
+            &#x9;&#x9;if (isMyTurn) return;
+            &#x9;&#x9;setTimeout(computerRound, 200);
+            &#x9;}
+            </code></pre>
+            <h2>10.訊息顯示區</h2>
+            <p class="preface">最後加入一個訊息顯示區來顯示狀態，並讓此區塊可以點擊來主動重置遊戲。</p>
+            <img src="images/web/tic-tac-toe_005.jpg">
+            <h3>Javascript：</h3>
+            <p>更新指令碼，在需要改變訊息的時候變更訊息並設定重置遊戲的事件監聽。</p>
+            <pre><code class="language-javascript">
+            &#x9;var isMyTurn = false;
+            &#x9;var message = document.getElementById(&#x22;titlearea&#x22;);
+
+            &#x9;message.addEventListener(&#x22;click&#x22;, reset, false);
+
+            &#x9;function reset() {
+            &#x9;&#x9;if (!result()) {
+            &#x9;&#x9;&#x9;isMyTurn = false;
+            &#x9;&#x9;}
+            &#x9;&#x9;message.innerHTML = &#x22;Tic-Tac-Toe&#x22;;
+            &#x9;&#x9;//&#xFF08;&#x7701;&#x7565;&#xFF09;&#x540C;&#x91CD;&#x7F6E;&#x904A;&#x6232;&#x7684;&#x6307;&#x4EE4;&#x78BC;
+            &#x9;}
+
+            &#x9;function result() {
+            &#x9;&#x9;var statusArray = [];
+            &#x9;&#x9;var winner; 
+            &#x9;&#x9;var start = [];
+            &#x9;&#x9;var end = [];
+
+            &#x9;&#x9;//&#xFF08;&#x7701;&#x7565;&#xFF09;&#x540C;&#x7D50;&#x679C;&#x5224;&#x65B7;&#x7684;&#x6307;&#x4EE4;&#x78BC;
+            &#x9;&#x9;
+            &#x9;&#x9;if (winner == user) {
+            &#x9;&#x9;&#x9;message.innerHTML = &#x22;You Win!&#x22;;
+            &#x9;&#x9;&#x9;drawLine(winner, start, end);
+            &#x9;&#x9;} else if (winner == computer) {
+            &#x9;&#x9;&#x9;message.innerHTML = &#x22;You Lose!&#x22;;
+            &#x9;&#x9;&#x9;drawLine(winner, start, end);
+            &#x9;&#x9;} else if (statusArray.indexOf(&#x22;none&#x22;) &#x3E;= 0) {
+            &#x9;&#x9;&#x9;return false;
+            &#x9;&#x9;} else {
+            &#x9;&#x9;&#x9;message.innerHTML = &#x22;No Winner&#x22;;
+            &#x9;&#x9;}
+            &#x9;&#x9;lineCanvas.style.setProperty(&#x22;z-index&#x22;, &#x22;2&#x22;);
+            &#x9;&#x9;return true;
+            &#x9;}
+            </code></pre>
+            <ul class="link">
+                <li><a target="_blank" href="https://github.com/logo148/myportfolio/blob/gh-pages/scripts/tic-tac-toe.js"><img src="images/skills/javascript0.jpg" width="30">完整javascript</a></li>
+            </ul>
         </div>
     </div>
     <nav>

@@ -1,219 +1,170 @@
-
 /*內容*/
 
 /*圖片區*/
 .mainzone {
-  margin-top: 20px;
-  color: transparent;
+    margin-top: 20px;
+    color: transparent;
 }
+
 /*大圖區*/
 .mainpicarea {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-  height: 50vh; /*保持按鈕不跳動*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 50vh;
+    /*保持按鈕不跳動*/
 }
 
 .showpic {
-  height: 100%;
-}
-/*圖片框線*/
-.showpic > img{
-  box-sizing: border-box;
-  padding: 2px;
-  border: 1px solid #aaa;
-}
-/*按鈕*/
-.changepicbtn{
-  margin: auto 5px;
-  color: transparent;
-  border-radius: 8px;
-  background-color: #aaa;
-  opacity: 0.3;
-  transition: 0.5s;
+    height: 100%;
 }
 
-.changepicbtn > img {
-  padding: 20px 10px;
-  vertical-align: middle;
+/*圖片框線*/
+.showpic>img {
+    box-sizing: border-box;
+    padding: 2px;
+    border: 1px solid #aaa;
+}
+
+/*按鈕*/
+.changepicbtn {
+    margin: auto 5px;
+    color: transparent;
+    border-radius: 8px;
+    background-color: #aaa;
+    opacity: 0.3;
+    transition: 0.5s;
+}
+
+.changepicbtn>img {
+    padding: 20px 10px;
+    vertical-align: middle;
 }
 
 .changepicbtn:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
+
 /*小圖區*/
 .allpicarea {
-  height: 10vh;
-  width: 90%;
-  margin: 20px auto 0;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: nowrap;
+    height: 10vh;
+    width: 90%;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
 }
 
 .portfoliopics {
-  margin: 2px 5px;
-  width: 20%;
-  text-align: center;
-  border: 1px solid #ccc;
+    margin: 2px 5px;
+    width: 20%;
+    text-align: center;
+    border: 1px solid #ccc;
 
 }
+
 /*圖片置中設定*/
 .showpic::before,
 .portfoliopics::before {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
-.showpic > img,
-.portfoliopics > img {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 100%;
-  max-height: 100%;
+.showpic>img,
+.portfoliopics>img {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /*目前圖片框線*/
 .portfoliopics.selecdpic {
-  border: 3px solid #f0437e;
-  margin: 0 3px;
+    border: 3px solid #f0437e;
+    margin: 0 3px;
 }
 
-/*文字區*/
-.text {
-  margin: 10px;
-  padding: 3px;
-}
-/*標題*/
-.text > h2 {
-  margin: 5px 15px;
-  border-bottom: 1px solid #888;
-  padding-bottom: 0.3em;
-  margin-bottom: 0.4em;
-  font-weight: 500;
-}
 
-.text > p {
-  margin: 5px 15px;
-  padding: 5px;
-  font-size: 0.9em;
-  line-height: 1.6;
-  font-weight: 400;
-}
-/*附註*/
-.text > h4 {
-  margin: 20px 15px 10px;
-  padding: 5px;
-  width: 100px;
-  border-bottom: 1px solid #888;
-  padding-bottom: 0.3em;
-  margin-bottom: 0.4em;
-  font-weight: 400;
-}
-
-.text > ul {
-  margin: 10px 15px;
-}
-
-.text > ul > li {
-  margin: 10px;
-}
-
-.text > ul > li > img {
-  vertical-align: middle;
-}
-
-.text > ul > li > span {
-  font-size: 0.9em;
-  margin-left: 10px;
-  font-weight: 400;
-}
 
 /*圖片放大區*/
 .largerpic {
-  display: none;
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-  background-color: rgba(0,0,0,0.7);
-  z-index: 3;
+    display: none;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 3;
 }
-.largerpic > img {
-  margin: 20px;
-  max-width: calc(100% - 40px);
-  max-height: calc(100vh - 40px);
+
+.largerpic>img {
+    margin: 20px;
+    max-width: calc(100% - 40px);
+    max-height: calc(100vh - 40px);
 }
+
 /*導覽列*/
-nav > a:nth-child(7) {
-  font-weight: 500;
-  color: #f0437e;
-  border-bottom: 2px solid #f0437e;
+nav>a:nth-child(7) {
+    font-weight: 500;
+    color: #f0437e;
+    border-bottom: 2px solid #f0437e;
 }
+
 /*RWD*/
 @media screen and (max-width: 768px) and (max-height: 415px) {
 
-  .mainzone {
-    width: auto;
-    margin: 10px auto;
-  }
+    .mainzone {
+        width: auto;
+        margin: 10px auto;
+    }
 
-  .mainpicarea {
-    height: calc(100vh - 102px); /*保持按鈕不跳動*/
-  }
+    .mainpicarea {
+        height: calc(100vh - 102px);
+        /*保持按鈕不跳動*/
+    }
 
-  .allpicarea {
-    height: 30vh;
-  }
+    .allpicarea {
+        height: 30vh;
+    }
 
 }
 
 @media screen and (min-width: 768px) {
 
-  .cases {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 30px 50px;
-  }
+    .cases {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 30px 50px;
+    }
 
-  .mainzone {
-    margin-right: 10px;
-    width: 60%;
-    max-width: 600px;
-  }
+    .mainzone {
+        margin-right: 10px;
+        width: 60%;
+        max-width: 600px;
+    }
 
-  .mainpicarea {
-    height: 25vw; /*保持按鈕不跳動*/
-    max-height: 400px;
-  }
+    .mainpicarea {
+        height: 25vw;
+        /*保持按鈕不跳動*/
+        max-height: 400px;
+    }
 
-  .allpicarea {
-    height: 8vw; /*保持按鈕不跳動*/
-    max-height: 100px;
-    width: 75%;
-  }
+    .allpicarea {
+        height: 8vw;
+        /*保持按鈕不跳動*/
+        max-height: 100px;
+        width: 75%;
+    }
 
-  .text{
-    margin: 0;
-    margin-left: 10px;
-    width: 40%;
-    max-width: 400px;
-  }
-
-  nav > a:nth-child(7) {
-    border-bottom: none;
-  }
+    nav>a:nth-child(7) {
+        border-bottom: none;
+    }
 
 }
-
-
-
-
-

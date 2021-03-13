@@ -1,165 +1,155 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-  var tmdbHref = "https://www.themoviedb.org/movie/"
-	var apiKey = "59e14d867ef664881ccfdb7da24f6502";
+    var tmdbHref = "https://www.themoviedb.org/movie/"
+    var apiKey = "59e14d867ef664881ccfdb7da24f6502";
 
-  $("#searchbtn").on("click", getSearchResult);
-  $("#searchtext").keypress(function (event) {
-    if (event.keyCode == 13) {
-      $("#searchbtn").trigger("click");
+    $("#searchbtn").on("click", getSearchResult);
+    $("#searchtext").keypress(function(event) {
+        if (event.keyCode == 13) {
+            $("#searchbtn").trigger("click");
+        }
+    });
+    $("form").submit(function() { return false; }); //取消enter送出
+
+    $(".allresultmovies").on("click", ".addmovie", addToMyList);
+    $(".allmymovies").on("click", ".deletemovie", deleteMyMovie);
+
+    $(".allresultmovies").empty();
+    loadLocalStorage();
+
+    //離線儲存
+    function loadLocalStorage() {
+        var movieListId = getMovieListId();
+        for (var i = 0; i < movieListId.length; i++) {
+            var key = movieListId[i];
+            var value = localStorage[key];
+            loadMovie(key, value);
+        }
     }
-  });
-  $("form").submit(function(){ return false; }); //取消enter送出
 
-  $(".allresultmovies").on("click", ".addmovie", addToMyList);
-  $(".allmymovies").on("click", ".deletemovie", deleteMyMovie);
+    function getMovieListId() {
+        var movieListId = localStorage.getItem("movieList");
+        if (!movieListId) {
+            movieListId = [];
+            localStorage.setItem("movieList", JSON.stringify(movieListId));
+        } else {
+            movieListId = JSON.parse(movieListId);
+        }
+        return movieListId;
+    }
 
-  $(".allresultmovies").empty();
-  loadLocalStorage();
+    function loadMovie(key, value) {
+        var href = tmdbHref + key.slice(10);
+        var title = value;
 
-//離線儲存
-function loadLocalStorage() {
-  var movieListId = getMovieListId();
-  for (var i = 0; i < movieListId.length; i++) {
-    var key = movieListId[i];
-    var value = localStorage[key];
-    loadMovie(key, value);
-  }
-}
+        var $titleLink = $("<a target='_blank'></a>");
+        $titleLink.attr("href", href).html(title);
 
-function getMovieListId() {
-  var movieListId = localStorage.getItem("movieList");
-  if (!movieListId) {
-    movieListId = [];
-    localStorage.setItem("movieList", JSON.stringify(movieListId));
-  } else {
-    movieListId = JSON.parse(movieListId);
-  }
-  return movieListId;
-}
+        var $deleteBtn = $("<button type='button'></button>");
+        $deleteBtn.addClass("deletemovie");
 
-function loadMovie(key, value) {
-  var href = tmdbHref + key.slice(10);
-  var title = value;
+        var $li = $("<li></li>");
+        $li.addClass("mymovie").append($titleLink).append($deleteBtn);
 
-  var $titleLink = $("<a target='_blank'></a>");
-  $titleLink.attr("href", href).html(title);
+        $(".allmymovies").append($li);
+    }
 
-  var $deleteBtn = $("<button type='button'></button>");
-  $deleteBtn.addClass("deletemovie");
+    function deleteMyMovie() {
+        var href = $(this).parent("li").find("a").attr("href");
+        var key = "movieList_" + href.split("/")[href.split("/").length - 1];
+        var movieListId = getMovieListId();
 
-  var $li = $("<li></li>");
-  $li.addClass("mymovie").append($titleLink).append($deleteBtn);
+        if (movieListId.indexOf(key) != -1) {
+            movieListId.splice(movieListId.indexOf(key), 1); //要避免沒有找到相符的會=-1溢出從後面算很麻煩
+        }
+        localStorage.setItem("movieList", JSON.stringify(movieListId));
+        localStorage.removeItem(key);
+        $(this).parent().remove();
+    }
 
-  $(".allmymovies").append($li);
-}
+    function getSearchResult() {
+        var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=zh-TW&query=" + $("#searchtext").val();
+        $.ajax({
+            url: searchUrl,
+            type: 'GET',
+            success: data => printResult(data),
+            error: err => $(".allresultmovies").html(err.statusText)
+        });
 
-function deleteMyMovie() {
-  var href = $(this).parent("li").find("a").attr("href");
-  var key = "movieList_" + href.split("/")[href.split("/").length - 1];
-  var movieListId = getMovieListId();
+        $("#searchtext").val("");
+    };
 
-  if ( movieListId.indexOf(key) != -1 ) {
-    movieListId.splice(movieListId.indexOf(key), 1); //要避免沒有找到相符的會=-1溢出從後面算很麻煩
-  }
-  localStorage.setItem("movieList", JSON.stringify(movieListId));
-  localStorage.removeItem(key);
-  $(this).parent().remove();
-}
+    function printResult(data) {
+        $(".allresultmovies").empty();
+        if (data.total_results == 0) {
+            $(".allresultmovies").text("無搜尋結果");
+            return;
+        }
+        data.results.map(movie => resultHandle(movie));
+    }
 
-function getSearchResult() {
-  var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&language=zh-TW&query=" + $("#searchtext").val();
-  $.ajax({
-    url: searchUrl,
-    type: 'GET',
-    success: data => printResult(data),
-    error: err => $(".allresultmovies").html(err.statusText)
-  });
+    function resultHandle(movie) {
+        var key = "movieList_" + movie.id.toString();
+        var href = tmdbHref + movie.id.toString();
+        var posterImg = (movie.poster_path == null ? "/images/noposteravailable.jpg" : "https://image.tmdb.org/t/p/w200" + movie.poster_path);
+        var title = movie.title;
+        var overview = movie.overview;
 
-  $("#searchtext").val("");
-};
+        var $posterLink = $("<a target='_blank'></a>");
+        $posterLink.attr("href", href).html("<img src='" + posterImg + "'>");
 
-function printResult(data) {
-	$(".allresultmovies").empty();
-  if (data.total_results == 0) {
-    $(".allresultmovies").text("無搜尋結果");
-    return;
-  }
-  data.results.map( movie => resultHandle(movie) );
-}
+        var $movieInfo = $("<div></div");
+        $movieInfo.addClass("movieinfo");
+        var $titleLink = $("<a target='_blank'></a>");
+        $titleLink.attr("href", href).html(title);
+        $movieInfo.append($titleLink).append("<p>" + overview + "</p>");
 
-function resultHandle(movie) {
-  var key = "movieList_" + movie.id.toString();
-  var href = tmdbHref + movie.id.toString();
-  var posterImg = (movie.poster_path == null ? "/images/noposteravailable.jpg" : "https://image.tmdb.org/t/p/w200" + movie.poster_path);
-  var title = movie.title;
-  var overview = movie.overview;  
+        var $addBtn = $("<button type='button'></button>");
 
-  var $posterLink = $("<a target='_blank'></a>");
-  $posterLink.attr("href", href).html("<img src='" + posterImg + "'>");
+        var movieListId = getMovieListId();
+        if (movieListId.indexOf(key) == -1) {
+            $addBtn.addClass("addmovie");
+        } else {
+            $addBtn.css("background-image", "url('./images/icon/added.png')");
+        }
 
-  var $movieInfo = $("<div></div");
-  $movieInfo.addClass("movieinfo");
-  var $titleLink = $("<a target='_blank'></a>");
-  $titleLink.attr("href", href).html(title);
-  $movieInfo.append($titleLink).append("<p>" + overview + "</p>");
+        var $li = $("<li></li>");
+        $li.addClass("resultmovie").append($posterLink).append($movieInfo).append($addBtn);
 
-  var $addBtn = $("<button type='button'></button>");
+        $(".allresultmovies").append($li);
+    }
 
-  var movieListId = getMovieListId();
-  if ( movieListId.indexOf(key) == -1 ) {
-      $addBtn.addClass("addmovie");
-  } else {
-    $addBtn.css("background-image", "url('./images/icon/added.png')");
-  }
+    function addToMyList() {
+        var href = $(this).parent("li").find("a").attr("href");
+        var movieId = href.split("/")[href.split("/").length - 1];
 
-  var $li = $("<li></li>");
-  $li.addClass("resultmovie").append($posterLink).append($movieInfo).append($addBtn);
+        var title = $(this).parent("li").find(".movieinfo > a").text();
 
-  $(".allresultmovies").append($li);
-}
+        var $titleLink = $("<a target='_blank'></a>");
+        $titleLink.attr("href", href).html(title);
 
-function addToMyList() {
-  var href = $(this).parent("li").find("a").attr("href");
-  var movieId = href.split("/")[href.split("/").length - 1];
+        var $deleteBtn = $("<button type='button'></button>");
+        $deleteBtn.addClass("deletemovie");
 
-  var title = $(this).parent("li").find(".movieinfo > a").text();
+        var $li = $("<li></li>");
+        $li.addClass("mymovie").append($titleLink).append($deleteBtn);
 
-  var $titleLink = $("<a target='_blank'></a>");
-  $titleLink.attr("href", href).html(title);
+        $(".allmymovies").append($li);
 
-  var $deleteBtn = $("<button type='button'></button>");
-  $deleteBtn.addClass("deletemovie");
+        $(this).removeClass("addmovie");
+        $(this).css("background-image", "url('./images/icon/added.png')");
 
-  var $li = $("<li></li>");
-  $li.addClass("mymovie").append($titleLink).append($deleteBtn);
+        saveMovie(movieId, title);
+    }
 
-  $(".allmymovies").append($li);
+    function saveMovie(movieId, title) {
+        var key = "movieList_" + movieId;
+        var value = title;
 
-  $(this).removeClass("addmovie");
-  $(this).css("background-image", "url('./images/icon/added.png')");
-
-  saveMovie(movieId, title);
-}
-
-function saveMovie(movieId, title) {
-  var key = "movieList_" + movieId;
-  var value = title;
-
-  var movieListId = getMovieListId();
-  localStorage.setItem(key, value);
-  movieListId.push(key);
-  localStorage.setItem("movieList", JSON.stringify(movieListId));
-}
-
-
-
-
-
-
-
-
-
-
+        var movieListId = getMovieListId();
+        localStorage.setItem(key, value);
+        movieListId.push(key);
+        localStorage.setItem("movieList", JSON.stringify(movieListId));
+    }
 
 });
