@@ -33,7 +33,7 @@
 		<ul class="idTabs">
 			<li><a href="#present">作品展示</a></li>
 			<li><a href="#htmlandcss">HTML&CSS</a></li>
-			<li><a class="selected" href="#js">Javascript</a></li>
+			<li><a href="#js">Javascript</a></li>
 		</ul>
 		<div class="cases" id="present">
 			<div class="mainzone">
@@ -128,10 +128,10 @@ button:focus {
 }
 </code></pre>
 			<h2>2.帶有摺疊功能的區塊</h2>
-			<p class="preface">建立兩個區塊，分別用來存放電影片單與搜尋結果，並設定摺疊按鈕，讓使用者可以收摺內容區塊。</p>
+			<p class="preface">建立兩個區塊，分別用來存放「我的片單」與「搜尋結果」，並設定摺疊按鈕，讓使用者可以收摺內容區塊。</p>
 			<img src="images/web/movielist_002.jpg">
 			<h3>HTML：</h3>
-			<p>建立<span>&#x3C;input type=&#x22;checkbox&#x22;&#x3E;標籤</span>來控制收摺狀態，並將一個<span>&#x3C;label&#x3E;標籤</span>作為按鈕來控制</p>
+			<p>建立<span>&#x3C;input type=&#x22;checkbox&#x22;&#x3E;元件</span>來控制收摺狀態，並將一個<span>&#x3C;label&#x3E;元件</span>作為按鈕來控制</p>
 <pre><code class="language-html">
 &#x3C;div class=&#x22;foldarea&#x22;&#x3E;
 &#x9;&#x3C;input type=&#x22;checkbox&#x22; name=&#x22;&#x22; class=&#x22;fold_control&#x22; id=&#x22;mylist_fold&#x22;&#x3E;
@@ -146,10 +146,10 @@ button:focus {
 			<h3>CSS：</h3>
 			<p>透過CSS控制摺疊功能，並加入收摺的動態效果</p>
 			<ul>
-				<li>設定<span>&#x3C;input&#x3E;標籤</span>為<span>position: absolute</span>絕對定位並隱藏</li>
-				<li>設定<span>&#x3C;input&#x3E;標籤</span>的<span>:checked偽類選擇器</span>，判斷點擊後將容器高度設為<span>height: 0</span>並以垂直位置移出<span>transform: translateY(-100%)</span></li>
+				<li>設定<span>&#x3C;input&#x3E;元件</span>為<span>position: absolute</span>絕對定位並隱藏</li>
+				<li>設定<span>&#x3C;input&#x3E;元件</span>的<span>:checked偽類選擇器</span>，判斷點擊後將容器高度設為<span>height: 0</span>並以垂直位置移出<span>transform: translateY(-100%)</span></li>
 				<li>設定內容的效果變化時間<span>transition: 1s</span></li>
-				<li>設定<span>&#x3C;label&#x3E;標籤</span>的位置與icon，點擊時用<span>transform: scaleY(-1)</span>垂直反轉icon圖示</li>
+				<li>設定<span>&#x3C;label&#x3E;元件</span>的位置與icon，點擊時用<span>transform: scaleY(-1)</span>垂直反轉icon圖示</li>
 				<li>設定超出容器時隱藏<span>overflow: hidden</span></li>
 			</ul>
 <pre><code class="language-css">
@@ -194,7 +194,7 @@ button:focus {
 			<p class="preface">存放電影名稱與「TMDB」電影網頁的連結，並加入可以從片單區刪除此電影的按鈕。</p>
 			<img src="images/web/movielist_003.jpg">
 			<h3>HTML：</h3>
-			<p>建立<span>&#x3C;ul&#x3E;標籤</span>來存放每一部電影，每個<span>&#x3C;li&#x3E;標籤</span>包括連結網址與刪除按鈕。</p>
+			<p>建立<span>&#x3C;ul&#x3E;元件</span>來存放每一部電影，每個<span>&#x3C;li&#x3E;元件</span>包括連結網址與刪除按鈕。</p>
 <pre><code class="language-html">
 &#x3C;ul class=&#x22;allmymovies&#x22;&#x3E;
 &#x9;&#x3C;li class=&#x22;mymovie&#x22;&#x3E;
@@ -205,8 +205,8 @@ button:focus {
 </code></pre>
 			<h3>CSS：</h3>
 			<ul>
-				<li><span>ul標籤</span>設定<span>display: flex屬性</span>排列</li>
-				<li><span>li標籤</span>設定<span>display: flex屬性</span>來讓電影名稱與按鈕水平排列</li>
+				<li><span>ul元件</span>設定<span>display: flex屬性</span>排列</li>
+				<li><span>li元件</span>設定<span>display: flex屬性</span>來讓電影名稱與按鈕水平排列</li>
 				<li>設定電影名稱的字數限制<span>text-overflow</span>、顯示行數<span>-webkit-line-clamp: 1</span>與<span>overflow: hidden</span>來避免名稱過長而超出顯示範圍</li>
 				<li>設定刪除按鈕的尺寸與icon</li>
 			</ul>
@@ -253,7 +253,7 @@ li.mymovie&#x3E;button {
 			<p class="preface">存放請求「TMDB API」搜尋的結果，包含海報圖片、網頁連結、電影名稱、電影簡介，以及點擊後可以加入片單的按鈕。</p>
 			<img src="images/web/movielist_004.jpg">
 			<h3>HTML：</h3>
-			<p>建立<span>&#x3C;ul&#x3E;標籤</span>來存放每一部電影，每個<span>&#x3C;li&#x3E;標籤</span>包括海報區、文字內容與刪除按鈕。</p>
+			<p>建立<span>&#x3C;ul&#x3E;元件</span>來存放每一部電影，每個<span>&#x3C;li&#x3E;元件</span>包括海報區、文字內容與刪除按鈕。</p>
 <pre><code class="language-html">
 &#x3C;ul class=&#x22;allresultmovies&#x22;&#x3E;
 &#x9;&#x3C;li class=&#x22;resultmovie&#x22;&#x3E;
@@ -270,8 +270,8 @@ li.mymovie&#x3E;button {
 </code></pre>
 			<h3>CSS：</h3>
 			<ul>
-				<li><span>ul標籤</span>設定<span>display: flex屬性</span>排列</li>
-				<li><span>li標籤</span>設定<span>display: flex屬性</span>來讓海報、文字內容與按鈕水平排列</li>
+				<li><span>ul元件</span>設定<span>display: flex屬性</span>排列</li>
+				<li><span>li元件</span>設定<span>display: flex屬性</span>來讓海報、文字內容與按鈕水平排列</li>
 				<li>在海報區設定一個<span>::before偽元素</span>來讓圖片能垂直置中</li>
 				<li>同樣設定電影名稱與簡介區的字數限制來避免名稱過長而超出顯示範圍</li>
 				<li>設定加入按鈕的尺寸與icon</li>
@@ -347,39 +347,308 @@ li.resultmovie&#x3E;button {
 			</ul>
 		</div>
 		<div class="cases description" id="js">
-			<h2>1.</h2>
-			<p class="preface"></p>
+			<h2>1.透過AJAX取得資料</h2>
+			<p class="preface">使用AJAX非同步處理取得電影資料庫網站「TMDB」的API的搜尋結果，將搜尋結果動態更新DOM的內容。</p>
+			<img src="images/web/movielist_005.jpg">
+			<p>從上圖「TMDB API」的說明文件取得搜尋網址的<span>url</span>，以及必需具備<span>query參數</span>作為搜尋關鍵字。</p>
 			<h3>Javascript：</h3>
 			<ul>
-				<li></li>
-				<li></li>
+				<li>使用jQuery的<span>$.ajax()</span>來執行請求</li>
+				<li>取出搜尋欄使用者輸入的關鍵字，結合搜尋位址作為ajax請求的<span>url</span></li>
+				<li>使用<span>GET</span>作為請求的方式</li>
+				<li>建立取得資料後的處理函式（稍後撰寫）</li>
+				<li>若請求出現錯誤將錯誤訊息顯示於搜尋結果的欄位中</li>
 			</ul>
 <pre><code class="language-javascript">
+var tmdbUrl = &#x22;https://www.themoviedb.org/movie/&#x22;
+var apiKey = &#x22;59e14d867ef664881ccfdb7da24f6502&#x22;;
 
+function getSearchResult() {
+&#x9;var searchUrl = &#x22;https://api.themoviedb.org/3/search/movie?api_key=&#x22; + apiKey + &#x22;&#x26;language=zh-TW&#x26;query=&#x22; + $(&#x22;#searchtext&#x22;).val();
+&#x9;$.ajax({
+&#x9;&#x9;url: searchUrl,
+&#x9;&#x9;type: &#x27;GET&#x27;,
+&#x9;&#x9;success: data =&#x3E; printResult(data),
+&#x9;&#x9;error: err =&#x3E; $(&#x22;.allresultmovies&#x22;).html(err.statusText)
+&#x9;});
+};
 </code></pre>
-			<h2>2.</h2>
-			<p class="preface"></p>
+			<p class="preface">處理搜尋功能的動作，讓搜尋按鈕點擊時可以執行AJAX請求。</p>
 			<h3>Javascript：</h3>
 			<ul>
-				<li></li>
-				<li></li>
+				<li>使用jQuery設定事件監聽來執行AJAX請求的函式</li>
+				<li>設定搜尋輸入欄位的鍵盤監聽，使用者按下<span>return鍵</span>也能夠執行</li>
+				<li>將<span>&#x3C;form&#x3E;表單</span>的<span>submit</span>預設動作取消</li>
 			</ul>
 <pre><code class="language-javascript">
-
+$(&#x22;#searchbtn&#x22;).on(&#x22;click&#x22;, getSearchResult);
+$(&#x22;#searchtext&#x22;).keypress(function(event) {
+&#x9;if (event.keyCode == 13) {
+&#x9;&#x9;$(&#x22;#searchbtn&#x22;).trigger(&#x22;click&#x22;);
+&#x9;}
+});
+$(&#x22;form&#x22;).submit(function() { return false; });
 </code></pre>
+			<h2>2.取得的資料內容</h2>
+			<p class="preface">查看請求後回傳的資料，找出需要的資料所代表的屬性。</p>
+			<img src="images/web/movielist_006.jpg">
+			<h3>Javascript：</h3>
+			<p>撰寫<span>$.ajax()</span>請求中處理回傳資料的函式：</p>
+			<ul>
+				<li>清空上回的搜尋結果</li>
+				<li>若搜尋結果數量為0，則在畫面上顯示提示文字</li>
+				<li>所有搜尋到的電影資料儲存在<span>data.results</span>集合裡，再對每一筆資料使用<span>.map()</span>分別進行處理</li>
+			</ul>
+<pre><code class="language-javascript">
+function printResult(data) {
+&#x9;$(&#x22;.allresultmovies&#x22;).empty();
+&#x9;if (data.total_results == 0) {
+&#x9;&#x9;$(&#x22;.allresultmovies&#x22;).text(&#x22;&#x7121;&#x641C;&#x5C0B;&#x7D50;&#x679C;&#x22;);
+&#x9;&#x9;return;
+&#x9;}
+&#x9;data.results.map(movie =&#x3E; resultHandle(movie));
+}
+</code></pre>
+			<h2>3.處理搜尋的電影資料</h2>
+			<p class="preface">將搜尋到的每一部電影資訊加進「搜尋結果」欄位的<span>&#x3C;ul&#x3E;元件</span>裡面。</p>
+			<h3>HTML：</h3>
+			<p>「搜尋結果」的DOM配置：</p>
+<pre><code class="language-html">
+&#x3C;ul class=&#x22;allresultmovies&#x22;&#x3E;
+&#x9;&#x3C;li class=&#x22;resultmovie&#x22;&#x3E;
+&#x9;&#x9;&#x3C;a href=&#x22;https://www.themoviedb.org/movie/577922&#x22;&#x3E;
+&#x9;&#x9;&#x9;&#x3C;img src=&#x22;https://image.tmdb.org/t/p/w200/yj2fK2noJy7IeC7IF7Ck89rGYOI.jpg&#x22;&#x3E;
+&#x9;&#x9;&#x3C;/a&#x3E;
+&#x9;&#x9;&#x3C;div class=&#x22;movieinfo&#x22;&#x3E;
+&#x9;&#x9;&#x9;&#x3C;a href=&#x22;https://www.themoviedb.org/movie/577922&#x22;&#x3E;天能&#x3C;/a&#x3E;
+&#x9;&#x9;&#x9;&#x3C;p&#x3E;時間將至。克里斯多福諾蘭編導，卡司羅伯派汀森、約翰大衛華盛頓主演。這不是時空旅行，而是逆轉未來。全新主角必須僅靠一個字「天能」，在順向與逆轉的時空中，為地球全人類的存亡誓死奮戰。&#x3C;/p&#x3E;
+&#x9;&#x9;&#x3C;/div&#x3E;
+&#x9;&#x9;&#x3C;button type=&#x22;button&#x22; class=&#x22;addmovie&#x22;&#x3E;&#x3C;/button&#x3E;
+&#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+</code></pre>
+			<h3>Javascript：</h3>
+			<p>建立新的<span>&#x3C;li&#x3E;元件</span>，依據HTML與CSS設定好的格式使用jQuery語法加入DOM之中。</p>
+			<ul>
+				<li>連結到電影頁面的位址為「網站位址」+<span>movie.id</span></li>
+				<li>海報圖片的位址為<span>movie.poster_path</span>，若沒有圖片則替換成自製的圖片</li>
+				<li>電影標題存放於<span>movie.title</span></li>
+				<li>電影簡介存放於<span>movie.overview</span></li>
+				<li>建立加入片單的按鈕</li>
+				<li>將新建立的<span>&#x3C;li&#x3E;元件</span>加進「搜尋結果」欄位的<span>&#x3C;ul&#x3E;元件</span>裡面</li>
+			</ul>
+<pre><code class="language-javascript">
+function resultHandle(movie) {
+&#x9;var href = tmdbUrl + movie.id.toString();
+&#x9;var posterImg = (movie.poster_path == null ? &#x22;/images/noposteravailable.jpg&#x22; : &#x22;https://image.tmdb.org/t/p/w200&#x22; + movie.poster_path);
+&#x9;var title = movie.title;
+&#x9;var overview = movie.overview;
 
+&#x9;var $posterLink = $(&#x22;&#x3C;a target=&#x27;_blank&#x27;&#x3E;&#x3C;/a&#x3E;&#x22;);
+&#x9;$posterLink.attr(&#x22;href&#x22;, href).html(&#x22;&#x3C;img src=&#x27;&#x22; + posterImg + &#x22;&#x27;&#x3E;&#x22;);
 
+&#x9;var $movieInfo = $(&#x22;&#x3C;div&#x3E;&#x3C;/div&#x22;);
+&#x9;$movieInfo.addClass(&#x22;movieinfo&#x22;);
 
+&#x9;var $titleLink = $(&#x22;&#x3C;a target=&#x27;_blank&#x27;&#x3E;&#x3C;/a&#x3E;&#x22;);
+&#x9;$titleLink.attr(&#x22;href&#x22;, href).html(title);
+&#x9;$movieInfo.append($titleLink).append(&#x22;&#x3C;p&#x3E;&#x22; + overview + &#x22;&#x3C;/p&#x3E;&#x22;);
 
+&#x9;var $addBtn = $(&#x22;&#x3C;button type=&#x27;button&#x27;&#x3E;&#x3C;/button&#x3E;&#x22;);
+    $addBtn.addClass(&#x22;addmovie&#x22;);
+    $addBtn.css(&#x22;background-image&#x22;, &#x22;url(&#x27;./images/icon/added.png&#x27;)&#x22;);
 
+&#x9;var $li = $(&#x22;&#x3C;li&#x3E;&#x3C;/li&#x3E;&#x22;);
+&#x9;$li.addClass(&#x22;resultmovie&#x22;).append($posterLink).append($movieInfo).append($addBtn);
 
+&#x9;$(&#x22;.allresultmovies&#x22;).append($li);
+}
+</code></pre>
+			<h2>4.加入電影至我的片單中</h2>
+			<p class="preface">設定事件處理，讓使用者可以點擊按鈕將電影資訊加進「我的片單」欄位的<span>&#x3C;ul&#x3E;元件</span>裡面。</p>
+			<img src="images/web/movielist_007.jpg">
+			<h3>HTML：</h3>
+			<p>「我的片單」的DOM配置：</p>
+<pre><code class="language-html">
+&#x3C;ul class=&#x22;allmymovies&#x22;&#x3E;
+&#x9;&#x3C;li class=&#x22;mymovie&#x22;&#x3E;
+&#x9;&#x9;&#x3C;a href=&#x22;https://www.themoviedb.org/movie/577922&#x22;&#x3E;天能&#x3C;/a&#x3E;
+&#x9;&#x9;&#x3C;button type=&#x22;button&#x22; class=&#x22;deletemovie&#x22;&#x3E;&#x3C;/button&#x3E;
+&#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+</code></pre>
+			<h3>Javascript：</h3>
+			<p>建立新的<span>&#x3C;li&#x3E;元件</span>，依據HTML與CSS設定好的格式使用jQuery語法加入DOM之中。</p>
+			<ul>
+				<li>將存放「搜尋結果」的<span>&#x3C;ul&#x3E;元件</span>設定jQuery事件監聽<span>.on()</span>，讓新添加的加入按鈕可以獨立執行事件處裡</li>
+				<li>加入連結到電影頁面的位址</li>
+				<li>加入電影標題</li>
+				<li>建立刪除片單的按鈕</li>
+				<li>將新建立的<span>&#x3C;li&#x3E;元件</span>加進「我的片單」欄位的<span>&#x3C;ul&#x3E;元件</span>裡面</li>
+				<li>在加入片單後取消該按鈕的事件監聽並更換按鈕的icon表示已加入</li>
+			</ul>
+<pre><code class="language-javascript">
+$(&#x22;.allresultmovies&#x22;).on(&#x22;click&#x22;, &#x22;.addmovie&#x22;, addToMyList);
 
+function addToMyList() {
+&#x9;var href = $(this).parent(&#x22;li&#x22;).find(&#x22;a&#x22;).attr(&#x22;href&#x22;);
+&#x9;var title = $(this).parent(&#x22;li&#x22;).find(&#x22;.movieinfo &#x3E; a&#x22;).text();
 
+&#x9;var $titleLink = $(&#x22;&#x3C;a target=&#x27;_blank&#x27;&#x3E;&#x3C;/a&#x3E;&#x22;);
+&#x9;$titleLink.attr(&#x22;href&#x22;, href).html(title);
 
+&#x9;var $deleteBtn = $(&#x22;&#x3C;button type=&#x27;button&#x27;&#x3E;&#x3C;/button&#x3E;&#x22;);
+&#x9;$deleteBtn.addClass(&#x22;deletemovie&#x22;);
 
+&#x9;var $li = $(&#x22;&#x3C;li&#x3E;&#x3C;/li&#x3E;&#x22;);
+&#x9;$li.addClass(&#x22;mymovie&#x22;).append($titleLink).append($deleteBtn);
 
+&#x9;$(&#x22;.allmymovies&#x22;).append($li);
 
+&#x9;$(this).removeClass(&#x22;addmovie&#x22;);
+&#x9;$(this).css(&#x22;background-image&#x22;, &#x22;url(&#x27;./images/icon/added.png&#x27;)&#x22;);
+}
+</code></pre>
+			<p class="preface">將刪除按鈕設定事件監聽，讓刪除按鈕點擊時可以刪除該<span>&#x3C;li&#x3E;元件</span>。</p>
+			<h3>Javascript：</h3>
+			<p>將存放「我的片單」的<span>&#x3C;ul&#x3E;元件</span>設定jQuery事件監聽<span>.on()</span>，讓新添加的刪除按鈕可以獨立執行事件處裡。</p>
+<pre><code class="language-javascript">
+$(&#x22;.allmymovies&#x22;).on(&#x22;click&#x22;, &#x22;.deletemovie&#x22;, deleteMyMovie);
 
+function deleteMyMovie() {
+&#x9;$(this).parent().remove();
+}
+</code></pre>
+			<h2>5.建立離線儲存</h2>
+			<p class="preface">為了讓加進「我的片單」中的電影能夠保存，將每筆電影資料建立離線儲存，重開瀏覽器時仍能保留已加入的片單。</p>
+			<img src="images/web/movielist_008.jpg">
+			<h3>Javascript：</h3>
+			<p>為了管理離線儲存的順序，希望讀取時能依添加順序放回網頁中，因此另外建立一個<span>鍵/值</span>來管理所有電影的<span>key</span>。</p>
+			<ul>
+				<li>建立一個可以回傳所有電影的<span>key</span>所組成的陣列</li>
+				<li>令存放「所有電影<span>key</span>」的<span>key</span>名稱為<span>"movieList"</span>，其<span>value</span>使用<span>JSON.stringify()</span>將陣列轉為字串存放</li>
+				<li>回傳從離線儲存取出的<span>value</span>時，使用<span>JSON.parse()</span>轉回陣列</li>
+			</ul>
+<pre><code class="language-javascript">
+function getMovieListId() {
+&#x9;var movieListId = localStorage.getItem(&#x22;movieList&#x22;);
+&#x9;if (!movieListId) {
+&#x9;&#x9;movieListId = [];
+&#x9;&#x9;localStorage.setItem(&#x22;movieList&#x22;, JSON.stringify(movieListId));
+&#x9;} else {
+&#x9;&#x9;movieListId = JSON.parse(movieListId);
+&#x9;}
+&#x9;return movieListId;
+}
+</code></pre>
+			<p>建立離線儲存的函式，參數為<span>電影id</span>與<span>電影名稱</span>，加入「我的片單」時即離線儲存。</p>
+			<ul>
+				<li>因取得的「電影id」不會是重複的值，可以將<span>電影id</span>加在<span>"movieList_"</span>後，作為電影的唯一<span>key</span></li>
+				<li>使用<span>localStorage.setItem()</span>將<span>電影名稱</span>作為<span>value</span>儲存</li>
+				<li>將離線儲存的<span>key</span>值使用<span>.push()</span>依序加入<span>"movieList"</span>的<span>value</span>並保存，可依此控制加入順序</li>
+				<li>更新加入片單的函式，在加入片單後即執行離線儲存，其中使用<span>.split()</span>來處理<span>href</span>的字串，取出<span>電影id</span></li>
+			</ul>
+<pre><code class="language-javascript">
+function saveMovie(movieId, title) {
+&#x9;var key = &#x22;movieList_&#x22; + movieId;
+&#x9;var value = title;
+
+&#x9;var movieListId = getMovieListId();
+&#x9;localStorage.setItem(key, value);
+&#x9;movieListId.push(key);
+&#x9;localStorage.setItem(&#x22;movieList&#x22;, JSON.stringify(movieListId));
+}
+
+function addToMyList() {
+&#x9;var href = $(this).parent(&#x22;li&#x22;).find(&#x22;a&#x22;).attr(&#x22;href&#x22;);
+&#x9;var movieId = href.split(&#x22;/&#x22;)[href.split(&#x22;/&#x22;).length - 1];
+&#x9;var title = $(this).parent(&#x22;li&#x22;).find(&#x22;.movieinfo &#x3E; a&#x22;).text();
+
+&#x9;//（略）同加入片單函式的指令碼
+
+&#x9;saveMovie(movieId, title);
+}
+</code></pre>
+			<h2>6.讀取離線儲存的資料</h2>
+			<p class="preface">讓網頁載入時讀取離線儲存的資料，並更新「我的片單」的DOM。</p>
+			<h3>Javascript：</h3>
+			<ul>
+				<li>建立讀取函式，並在網頁載入時將每部儲存的電影以<span>for迴圈</span>依序載入</li>
+				<li>建立更新DOM的函式，參數為電影儲存的<span>key</span>與<span>value</span></li>
+			</ul>
+<pre><code class="language-javascript">
+loadLocalStorage();
+
+function loadLocalStorage() {
+&#x9;var movieListId = getMovieListId();
+&#x9;for (var i = 0; i &#x3C; movieListId.length; i++) {
+&#x9;&#x9;var key = movieListId[i];
+&#x9;&#x9;var value = localStorage[key];
+&#x9;&#x9;loadMovie(key, value);
+&#x9;}
+}
+
+function loadMovie(key, value) {
+&#x9;var href = tmdbUrl + key.slice(10);
+&#x9;var title = value;
+
+&#x9;var $titleLink = $(&#x22;&#x3C;a target=&#x27;_blank&#x27;&#x3E;&#x3C;/a&#x3E;&#x22;);
+&#x9;$titleLink.attr(&#x22;href&#x22;, href).html(title);
+
+&#x9;var $deleteBtn = $(&#x22;&#x3C;button type=&#x27;button&#x27;&#x3E;&#x3C;/button&#x3E;&#x22;);
+&#x9;$deleteBtn.addClass(&#x22;deletemovie&#x22;);
+
+&#x9;var $li = $(&#x22;&#x3C;li&#x3E;&#x3C;/li&#x3E;&#x22;);
+&#x9;$li.addClass(&#x22;mymovie&#x22;).append($titleLink).append($deleteBtn);
+&#x9;$(&#x22;.allmymovies&#x22;).append($li);
+}
+</code></pre>
+			<h2>7.刪除離線儲存的資料</h2>
+			<p class="preface">更新刪除片單的處理函式，將離線儲存的資料刪除。</p>
+			<h3>Javascript：</h3>
+			<ul>
+				<li>使用<span>.split()</span>來處理<span>href</span>的字串，取出<span>電影id</span></li>
+				<li>使用<span>localStorage.removeItem()</span>刪除離線保存的資料</li>
+				<li>使用<span>.splice()</span>，移除該電影在<span>"movieList"</span>的<span>value</span>並保存</li>
+			</ul>
+<pre><code class="language-javascript">
+$(&#x22;.allmymovies&#x22;).on(&#x22;click&#x22;, &#x22;.deletemovie&#x22;, deleteMyMovie);
+
+function deleteMyMovie() {
+&#x9;var href = $(this).parent(&#x22;li&#x22;).find(&#x22;a&#x22;).attr(&#x22;href&#x22;);
+&#x9;var key = &#x22;movieList_&#x22; + href.split(&#x22;/&#x22;)[href.split(&#x22;/&#x22;).length - 1];
+&#x9;var movieListId = getMovieListId();
+
+&#x9;localStorage.removeItem(key);
+&#x9;if (movieListId.indexOf(key) != -1) {
+&#x9;&#x9;movieListId.splice(movieListId.indexOf(key), 1);
+&#x9;}
+&#x9;localStorage.setItem(&#x22;movieList&#x22;, JSON.stringify(movieListId));
+&#x9;$(this).parent().remove();
+}
+</code></pre>
+			<h2>8.更新搜尋結果的按鈕</h2>
+			<p class="preface">有了離線保存的資料，可以將搜尋結果排除已加入「我的片單」的電影。</p>
+			<img src="images/web/movielist_008.jpg">
+			<h3>Javascript：</h3>
+			<p>在處理搜尋到的電影時，使用<span>.indexOf()</span>傳入<span>key</span>來檢查是否已儲存，已儲存則將不將按鈕設定事件監聽並更換icon表示已加入。</p>
+<pre><code class="language-javascript">
+function resultHandle(movie) {
+&#x9;var key = &#x22;movieList_&#x22; + movie.id.toString();
+
+&#x9;//（略）同處理搜尋的電影資料的指令碼
+
+&#x9;var $addBtn = $(&#x22;&#x3C;button type=&#x27;button&#x27;&#x3E;&#x3C;/button&#x3E;&#x22;);
+&#x9;var movieListId = getMovieListId();
+&#x9;if (movieListId.indexOf(key) == -1) {
+&#x9;&#x9;$addBtn.addClass(&#x22;addmovie&#x22;);
+&#x9;} else {
+&#x9;&#x9;$addBtn.css(&#x22;background-image&#x22;, &#x22;url(&#x27;./images/icon/added.png&#x27;)&#x22;);
+&#x9;}
+
+&#x9;//（略）同處理搜尋的電影資料的指令碼
+}
+</code></pre>
 			<ul class="link">
 				<li><a target="_blank" href="https://github.com/logo148/myportfolio/blob/gh-pages/scripts/movielist.js"><img src="images/skills/javascript0.jpg" width="30">完整javascript</a></li>
 			</ul>

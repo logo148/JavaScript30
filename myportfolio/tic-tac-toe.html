@@ -72,7 +72,7 @@
 		</div>
 		<div class="cases description" id="htmlandcss">
 			<h2>1.九宮格的佈置</h2>
-			<p class="preface">井字遊戲的「◯」、「╳」需要繪製於九宮格的九個區域，因此使用<span>&#x3C;table&#x3E;標籤</span>建立九宮格，再將每個<span>&#x3C;td&#x3E;標籤</span>上分別放置一個<span>&#x3C;canvas&#x3E;標籤</span>來作圖。</p>
+			<p class="preface">井字遊戲的「◯」、「╳」需要繪製於九宮格的九個區域，因此使用<span>&#x3C;table&#x3E;元件</span>建立九宮格，再將每個<span>&#x3C;td&#x3E;元件</span>裡分別放置一個<span>&#x3C;canvas&#x3E;元件</span>來作圖。</p>
 			<img src="images/web/tic-tac-toe_001.jpg">
 			<h3>HTML：</h3>
 <pre><code class="language-html">
@@ -116,7 +116,7 @@ td.middle.center {
 }
 </code></pre>
 			<h2>2.繪製連線區域的佈置</h2>
-			<p class="preface">有勝利者時會需要繪製連線，因此再建立一個<span>&#x3C;canvas&#x3E;標籤</span>，並將此<span>&#x3C;canvas&#x3E;</span>與整個<span>&#x3C;table&#x3E;</span>重疊。</p>
+			<p class="preface">有勝利者時會需要繪製連線，因此再建立一個<span>&#x3C;canvas&#x3E;元件</span>，並將此<span>&#x3C;canvas&#x3E;元件</span>與整個<span>&#x3C;table&#x3E;元件</span>重疊。</p>
 			<img src="images/web/tic-tac-toe_002.jpg">
 			<h3>HTML：</h3>
 			<p><span>&#x3C;canvas&#x3E;</span>放置於<span>&#x3C;table&#x3E;</span>前，初始時不會被點擊到。</p>
@@ -213,7 +213,7 @@ var allCases = [{&#x9;case: [0, 1, 2],
 &#x9;&#x9;&#x9;&#x9;}];
 </code></pre>
 			<h2>3.使用者與電腦的回合</h2>
-			<p class="preface">將每個<span>&#x3C;td&#x3E;標籤</span>裡的<span>&#x3C;canvas&#x3E;</span>設定事件監聽，使用者點擊和電腦選擇格子後則在<span>&#x3C;canvas&#x3E;</span>上作圖，並更新「九宮格」與「連線條件」的儲存狀態。</p>
+			<p class="preface">將每個<span>&#x3C;td&#x3E;元件</span>裡的<span>&#x3C;canvas&#x3E;元件</span>設定事件監聽，使用者點擊和電腦選擇格子後則在<span>&#x3C;canvas&#x3E;元件</span>上作圖，並更新「九宮格」與「連線條件」的儲存狀態。</p>
 			<h3>Javascript：</h3>
 			<p>使用者回合的執行順序：</p>
 			<ol>
@@ -472,7 +472,7 @@ function result() {
 &#x9;var end = [];
 &#x9;var winner;
 
-&#x9;//（省略）判斷勝利者時的語法與連線的(X, Y)座標
+&#x9;//（略）判斷勝利者時的語法與連線的(X, Y)座標
 
 &#x9;for (var i = 0; i &#x3C; allDesks.length; i++) {
 &#x9;&#x9;statusArray.push(allDesks[i].status);
@@ -593,7 +593,7 @@ function reset() {
 &#x9;&#x9;isMyTurn = false;
 &#x9;}
 &#x9;message.innerHTML = &#x22;Tic-Tac-Toe&#x22;;
-&#x9;//（省略）同重置遊戲的指令碼
+&#x9;//（略）同重置遊戲的指令碼
 }
 
 function result() {
@@ -602,7 +602,7 @@ function result() {
 &#x9;var start = [];
 &#x9;var end = [];
 
-&#x9;//（省略）同結果判斷的指令碼
+&#x9;//（略）同結果判斷的指令碼
 &#x9;
 &#x9;if (winner == user) {
 &#x9;&#x9;message.innerHTML = &#x22;You Win!&#x22;;
