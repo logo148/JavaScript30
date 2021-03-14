@@ -31,9 +31,9 @@
 	</div>
 	<div class="content">
 		<ul class="idTabs">
-			<li><a class="selected" href="#present">作品展示</a></li>
+			<li><a href="#present">作品展示</a></li>
 			<li><a href="#htmlandcss">HTML&CSS</a></li>
-			<li><a href="#js">Javascript</a></li>
+			<li><a class="selected" href="#js">Javascript</a></li>
 		</ul>
 		<div class="cases" id="present">
 			<div class="mainzone">
@@ -48,7 +48,6 @@
 					<h3>我的片單</h3>
 					<div class="moviecontent">
 						<ul class="allmymovies">
-							<li></li>
 						</ul>
 					</div>
 				</div>
@@ -58,14 +57,13 @@
 					<h3>搜尋結果</h3>
 					<div class="moviecontent">
 						<ul class="allresultmovies">
-							<li></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="text">
 				<h2>電影片單</h2>
-				<p>透過AJAX請求「TMDB電影資料庫網站」的API搜尋資料，並顯示於搜尋結果欄。可將搜尋結果增加到上方清單內，並離線保存，於下次開啟本網頁時仍保存增加的電影清單。</p>
+				<p>透過AJAX請求「TMDB電影資料庫網站」的API搜尋資料，動態顯示於搜尋結果欄位。使用者可將搜尋結果個別增加到上方我的片單內，並離線保存，於下次開啟本網頁時仍保存著電影片單。</p>
 				<h4>使用工具</h4>
 				<ul>
 					<li><img src="images/skills/html0.jpg" width="30"><span>HTML</span></li>
@@ -76,8 +74,315 @@
 			</div>
 		</div>
 		<div class="cases description" id="htmlandcss">
+			<h2>1.搜尋欄</h2>
+			<p class="preface">建立一個搜尋欄位，讓使用者可以輸入電影名稱與點擊搜尋按鈕。</p>
+			<img src="images/web/movielist_001.jpg">
+			<h3>HTML：</h3>
+			<p>建立<span>&#x3C;form&#x3E;表單</span>來放置搜尋欄<span>&#x3C;input&#x3E;</span>與搜尋按鈕<span>&#x3C;button&#x3E;</span>。</p>
+<pre><code class="language-html">
+&#x3C;form class=&#x22;searcharea&#x22; action=&#x22;search&#x22; autocomplete=&#x22;off&#x22;&#x3E;
+&#x9;&#x3C;input type=&#x22;search&#x22; id=&#x22;searchtext&#x22; placeholder=&#x22;&#x8ACB;&#x8F38;&#x5165;&#x96FB;&#x5F71;&#x540D;&#x7A31;&#x22;&#x3E;
+&#x9;&#x3C;button type=&#x22;button&#x22; id=&#x22;searchbtn&#x22;&#x3E;&#x3C;/button&#x3E;
+&#x3C;/form&#x3E;
+</code></pre>
+			<h3>CSS：</h3>
+			<ul>
+				<li>設定<span>display: flex屬性</span>來讓<span>&#x3C;input&#x3E;</span>與<span>&#x3C;button&#x3E;</span>水平排列</li>
+				<li>設定<span>outline: none屬性</span>取消搜尋點擊時的外框</li>
+				<li>搜尋欄設定<span>font-size: initial屬性</span>讓行動裝置不會因字體大小而放大</li>
+				<li>使用<span>::placeholder偽元素</span>更改搜尋欄預設文字的顏色</li>
+				<li>設定搜尋按鈕尺寸與icon</li>
+			</ul>
+<pre><code class="language-css">
+.searcharea {
+&#x9;display: flex;
+&#x9;justify-content: space-between;
+&#x9;box-sizing: border-box;
+&#x9;border: 2px solid #000;
+&#x9;border-radius: 100px;
+}
+.searcharea&#x3E;input,
+.searcharea&#x3E;button {
+&#x9;padding: 5px 10px;
+&#x9;border: none;
+&#x9;background-color: transparent;
+}
+input:focus,
+button:focus {
+&#x9;outline: none;
+}
+.searcharea&#x3E;input {
+&#x9;width: 100%;
+&#x9;font-size: initial;
+}
+.searcharea&#x3E;input::placeholder {
+&#x9;color: #ccc;
+}
+.searcharea&#x3E;button {
+&#x9;width: 50px;
+&#x9;color: transparent;
+&#x9;background-image: url(&#x27;../images/icon/search.png&#x27;);
+&#x9;background-repeat: no-repeat;
+&#x9;background-size: 20px 20px;
+&#x9;background-position: center;
+}
+</code></pre>
+			<h2>2.帶有摺疊功能的區塊</h2>
+			<p class="preface">建立兩個區塊，分別用來存放電影片單與搜尋結果，並設定摺疊按鈕，讓使用者可以收摺內容區塊。</p>
+			<img src="images/web/movielist_002.jpg">
+			<h3>HTML：</h3>
+			<p>建立<span>&#x3C;input type=&#x22;checkbox&#x22;&#x3E;標籤</span>來控制收摺狀態，並將一個<span>&#x3C;label&#x3E;標籤</span>作為按鈕來控制</p>
+<pre><code class="language-html">
+&#x3C;div class=&#x22;foldarea&#x22;&#x3E;
+&#x9;&#x3C;input type=&#x22;checkbox&#x22; name=&#x22;&#x22; class=&#x22;fold_control&#x22; id=&#x22;mylist_fold&#x22;&#x3E;
+&#x9;&#x3C;label class=&#x22;foldbtn&#x22; for=&#x22;mylist_fold&#x22;&#x3E;&#x6536;&#x647A;&#x3C;/label&#x3E;
+&#x9;&#x3C;h3&#x3E;&#x6211;&#x7684;&#x7247;&#x55AE;&#x3C;/h3&#x3E;
+&#x9;&#x3C;div class=&#x22;moviecontent&#x22;&#x3E;
+&#x9;&#x9;&#x3C;ul class=&#x22;allmymovies&#x22;&#x3E;
+&#x9;&#x9;&#x3C;/ul&#x3E;
+&#x9;&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+</code></pre>
+			<h3>CSS：</h3>
+			<p>透過CSS控制摺疊功能，並加入收摺的動態效果</p>
+			<ul>
+				<li>設定<span>&#x3C;input&#x3E;標籤</span>為<span>position: absolute</span>絕對定位並隱藏</li>
+				<li>設定<span>&#x3C;input&#x3E;標籤</span>的<span>:checked偽類選擇器</span>，判斷點擊後將容器高度設為<span>height: 0</span>並以垂直位置移出<span>transform: translateY(-100%)</span></li>
+				<li>設定內容的效果變化時間<span>transition: 1s</span></li>
+				<li>設定<span>&#x3C;label&#x3E;標籤</span>的位置與icon，點擊時用<span>transform: scaleY(-1)</span>垂直反轉icon圖示</li>
+				<li>設定超出容器時隱藏<span>overflow: hidden</span></li>
+			</ul>
+<pre><code class="language-css">
+.fold_control {
+&#x9;position: absolute;
+&#x9;opacity: 0;
+&#x9;z-index: -1;
+}
+.fold_control:checked~.moviecontent {
+&#x9;height: 0;
+}
+.fold_control:checked~.moviecontent&#x3E;ul {
+&#x9;transform: translateY(-100%);
+}
+.fold_control:checked~.foldbtn {
+&#x9;transform: scaleY(-1);
+}
+.foldbtn {
+&#x9;position: absolute;
+&#x9;right: 0;
+&#x9;box-sizing: border-box;
+&#x9;border-radius: 5px;
+&#x9;margin-top: 7px;
+&#x9;margin-right: 10px;
+&#x9;width: 50px;
+&#x9;color: transparent;
+&#x9;user-select: none;
+&#x9;background-image: url(&#x27;../images/icon/fold.png&#x27;);
+&#x9;background-repeat: no-repeat;
+&#x9;background-size: 50% 80%;
+&#x9;background-position: center;
+}
+.moviecontent {
+&#x9;overflow: hidden;
+}
+.moviecontent&#x3E;ul {
+&#x9;transform: translateY(0);
+&#x9;transition: 1s;
+}
+</code></pre>
+			<h2>3.存放電影片單的標籤</h2>
+			<p class="preface">存放電影名稱與「TMDB」電影網頁的連結，並加入可以從片單區刪除此電影的按鈕。</p>
+			<img src="images/web/movielist_003.jpg">
+			<h3>HTML：</h3>
+			<p>建立<span>&#x3C;ul&#x3E;標籤</span>來存放每一部電影，每個<span>&#x3C;li&#x3E;標籤</span>包括連結網址與刪除按鈕。</p>
+<pre><code class="language-html">
+&#x3C;ul class=&#x22;allmymovies&#x22;&#x3E;
+&#x9;&#x3C;li class=&#x22;mymovie&#x22;&#x3E;
+&#x9;&#x9;&#x3C;a href=&#x22;https://www.themoviedb.org/movie/15&#x22;&#x3E;大國民&#x3C;/a&#x3E;
+&#x9;&#x9;&#x3C;button type=&#x22;button&#x22; class=&#x22;deletemovie&#x22;&#x3E;&#x3C;/button&#x3E;
+&#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+</code></pre>
+			<h3>CSS：</h3>
+			<ul>
+				<li><span>ul標籤</span>設定<span>display: flex屬性</span>排列</li>
+				<li><span>li標籤</span>設定<span>display: flex屬性</span>來讓電影名稱與按鈕水平排列</li>
+				<li>設定電影名稱的字數限制<span>text-overflow</span>、顯示行數<span>-webkit-line-clamp: 1</span>與<span>overflow: hidden</span>來避免名稱過長而超出顯示範圍</li>
+				<li>設定刪除按鈕的尺寸與icon</li>
+			</ul>
+<pre><code class="language-css">
+ul.allmymovies {
+&#x9;display: flex;
+&#x9;justify-content: flex-start;
+&#x9;flex-wrap: wrap;
+}
+li.mymovie {
+&#x9;display: flex;
+&#x9;justify-content: space-between;
+&#x9;box-sizing: border-box;
+&#x9;width: 250px;
+&#x9;margin: 5px 10px 5px;
+&#x9;border: 2px solid #aaa;
+&#x9;border-radius: 5px;
+}
+li.mymovie&#x3E;a {
+&#x9;display: -webkit-box;
+&#x9;padding: 5px;
+&#x9;text-align: left;
+&#x9;text-decoration: none;
+&#x9;width: 100%;
+&#x9;color: #000;
+&#x9;font-size: 1em;
+&#x9;font-weight: 500;
+&#x9;text-overflow: ellipsis;
+&#x9;-webkit-line-clamp: 1;
+&#x9;-webkit-box-orient: vertical;
+&#x9;overflow: hidden;
+}
+li.mymovie&#x3E;button {
+&#x9;width: 50px;
+&#x9;border: none;
+&#x9;background-color: transparent;
+&#x9;background-image: url(&#x27;../images/icon/delete.png&#x27;);
+&#x9;background-repeat: no-repeat;
+&#x9;background-size: 60%;
+&#x9;background-position: center;
+}
+</code></pre>
+			<h2>4.存放搜尋結果的標籤</h2>
+			<p class="preface">存放請求「TMDB API」搜尋的結果，包含海報圖片、網頁連結、電影名稱、電影簡介，以及點擊後可以加入片單的按鈕。</p>
+			<img src="images/web/movielist_004.jpg">
+			<h3>HTML：</h3>
+			<p>建立<span>&#x3C;ul&#x3E;標籤</span>來存放每一部電影，每個<span>&#x3C;li&#x3E;標籤</span>包括海報區、文字內容與刪除按鈕。</p>
+<pre><code class="language-html">
+&#x3C;ul class=&#x22;allresultmovies&#x22;&#x3E;
+&#x9;&#x3C;li class=&#x22;resultmovie&#x22;&#x3E;
+&#x9;&#x9;&#x3C;a href=&#x22;https://www.themoviedb.org/movie/122&#x22;&#x3E;
+&#x9;&#x9;&#x9;&#x3C;img src=&#x22;https://image.tmdb.org/t/p/w200/AeCzdIZYJIrzl7iaTtQYjPPnPED.jpg&#x22;&#x3E;
+&#x9;&#x9;&#x3C;/a&#x3E;
+&#x9;&#x9;&#x3C;div class=&#x22;movieinfo&#x22;&#x3E;
+&#x9;&#x9;&#x9;&#x3C;a href=&#x22;https://www.themoviedb.org/movie/122&#x22;&#x3E;魔戒三部曲：王者再臨&#x3C;/a&#x3E;
+&#x9;&#x9;&#x9;&#x3C;p&#x3E;故事隨著哈比人佛羅多與山姆、咕嚕前往末日山脈，甘道夫、勒苟拉斯、金靂、法拉墨也正積極對抗索倫魔君，捍衛中土世界...。&#x3C;/p&#x3E;
+&#x9;&#x9;&#x3C;/div&#x3E;
+&#x9;&#x9;&#x3C;button type=&#x22;button&#x22; class=&#x22;addmovie&#x22;&#x3E;&#x3C;/button&#x3E;
+&#x9;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+</code></pre>
+			<h3>CSS：</h3>
+			<ul>
+				<li><span>ul標籤</span>設定<span>display: flex屬性</span>排列</li>
+				<li><span>li標籤</span>設定<span>display: flex屬性</span>來讓海報、文字內容與按鈕水平排列</li>
+				<li>在海報區設定一個<span>::before偽元素</span>來讓圖片能垂直置中</li>
+				<li>同樣設定電影名稱與簡介區的字數限制來避免名稱過長而超出顯示範圍</li>
+				<li>設定加入按鈕的尺寸與icon</li>
+			</ul>
+<pre><code class="language-css">
+li.resultmovie {
+&#x9;display: flex;
+&#x9;box-sizing: border-box;
+&#x9;width: 100%;
+&#x9;margin: 20px auto;
+&#x9;border: 2px solid #aaa;
+&#x9;border-radius: 0 15px 15px 0;
+}
+li.resultmovie&#x3E;a {
+&#x9;width: 25%;
+}
+li.resultmovie&#x3E;a::before {
+&#x9;content: &#x22;&#x22;;
+&#x9;display: inline-block;
+&#x9;height: 100%;
+&#x9;vertical-align: middle;
+}
+li.resultmovie&#x3E;a&#x3E;img {
+&#x9;display: inline-block;
+&#x9;max-width: 100%;
+&#x9;height: auto;
+&#x9;vertical-align: middle;
+}
+li.resultmovie&#x3E;div {
+&#x9;box-sizing: border-box;
+&#x9;width: 60%;
+&#x9;margin: auto 10px;
+&#x9;text-align: left;
+&#x9;vertical-align: middle;
+}
+li.resultmovie&#x3E;div&#x3E;a {
+&#x9;display: -webkit-inline-box;
+&#x9;text-align: left;
+&#x9;text-decoration: none;
+&#x9;color: #000;
+&#x9;font-weight: 700;
+&#x9;text-overflow: ellipsis;
+&#x9;-webkit-line-clamp: 1;
+&#x9;-webkit-box-orient: vertical;
+&#x9;overflow: hidden;
+}
+li.resultmovie&#x3E;div&#x3E;p {
+&#x9;display: -webkit-box;
+&#x9;box-sizing: border-box;
+&#x9;margin-top: 10px;
+&#x9;font-size: 0.4em;
+&#x9;line-height: 1.6;
+&#x9;text-overflow: ellipsis;
+&#x9;-webkit-line-clamp: 3;
+&#x9;-webkit-box-orient: vertical;
+&#x9;overflow: hidden;
+}
+li.resultmovie&#x3E;button {
+&#x9;width: 15%;
+&#x9;color: transparent;
+&#x9;border: none;
+&#x9;border-left: 2px solid #aaa;
+&#x9;background-color: transparent;
+&#x9;background-image: url(&#x27;../images/icon/add.png&#x27;);
+&#x9;background-repeat: no-repeat;
+&#x9;background-size: 60%;
+&#x9;background-position: center;
+}
+</code></pre>
+			<ul class="link">
+				<li><a target="_blank" href="https://github.com/logo148/myportfolio/blob/gh-pages/movielist.html"><img src="images/skills/html0.jpg" width="30">完整HTML</a></li>
+				<li><a target="_blank" href="https://github.com/logo148/myportfolio/blob/gh-pages/styles/movielist.css"><img src="images/skills/css0.jpg" width="30">完整CSS</a></li>
+			</ul>
 		</div>
 		<div class="cases description" id="js">
+			<h2>1.</h2>
+			<p class="preface"></p>
+			<h3>Javascript：</h3>
+			<ul>
+				<li></li>
+				<li></li>
+			</ul>
+<pre><code class="language-javascript">
+
+</code></pre>
+			<h2>2.</h2>
+			<p class="preface"></p>
+			<h3>Javascript：</h3>
+			<ul>
+				<li></li>
+				<li></li>
+			</ul>
+<pre><code class="language-javascript">
+
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<ul class="link">
+				<li><a target="_blank" href="https://github.com/logo148/myportfolio/blob/gh-pages/scripts/movielist.js"><img src="images/skills/javascript0.jpg" width="30">完整javascript</a></li>
+			</ul>
 		</div>
 	</div>
 	<nav>
@@ -89,6 +394,9 @@
 		<a href="#">產品設計作品</a>
 		<a href="graphicdesign.html">平面設計作品</a>
 	</nav>
+	<div class="largerpic">
+		<img id="fullsizepic" src="">
+	</div>
 	<footer>
 		<p>Copyright &copy; 2021</p>
 	</footer>

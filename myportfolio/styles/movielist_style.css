@@ -9,7 +9,7 @@
     box-sizing: border-box;
     margin: auto;
     padding: 10px;
-    width: 100%;
+    width: 300px;
     height: 70px;
     text-align: center;
     font-family: monospace;
@@ -29,7 +29,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     margin: 30px auto 20px;
-    width: 90%;
+    width: 80%;
     border: 2px solid #000;
     border-radius: 100px;
 }
@@ -41,12 +41,16 @@
     background-color: transparent;
 }
 
+input:focus,
+button:focus {
+    outline: none;
+}
+
 .searcharea>input {
     width: 100%;
     font-size: initial;
 }
-
-::placeholder {
+.searcharea>input::placeholder {
     color: #ccc;
 }
 
@@ -59,10 +63,6 @@
     background-position: center;
 }
 
-input:focus,
-button:focus {
-    outline: none;
-}
 
 
 /*摺疊區塊*/
@@ -105,12 +105,12 @@ button:focus {
     z-index: -1;
 }
 
-.fold_control:checked~.moviecontent>ul {
-    transform: translateY(-150%);
-}
-
 .fold_control:checked~.moviecontent {
     height: 0;
+}
+
+.fold_control:checked~.moviecontent>ul {
+    transform: translateY(-150%);
 }
 
 .fold_control:checked~.foldbtn {
@@ -301,7 +301,7 @@ nav>a:nth-child(4) {
 
     .mainzone {
         margin-right: 10px;
-        padding: 10px 10px;
+        padding: 10px 0px;
         width: 60%;
         max-width: 600px;
     }

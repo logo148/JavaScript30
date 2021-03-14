@@ -72,12 +72,12 @@
 		</div>
 		<div class="cases description" id="htmlandcss">
 			<h2>1.九宮格的佈置</h2>
-			<p class="preface">井字遊戲的「◯」、「╳」需要繪製於九宮格的九個區域，因此使用<span>&#x3C;table&#x3E;</span>標籤建立九宮格，再將每個<span>&#x3C;td&#x3E;</span>標籤上分別放置一個<span>&#x3C;canvas&#x3E;</span>標籤來作圖。</p>
+			<p class="preface">井字遊戲的「◯」、「╳」需要繪製於九宮格的九個區域，因此使用<span>&#x3C;table&#x3E;標籤</span>建立九宮格，再將每個<span>&#x3C;td&#x3E;標籤</span>上分別放置一個<span>&#x3C;canvas&#x3E;標籤</span>來作圖。</p>
 			<img src="images/web/tic-tac-toe_001.jpg">
 			<h3>HTML：</h3>
 <pre><code class="language-html">
 &#x3C;table&#x3E;
-&#x9;&#x3C;tr&#x3E;
+&#x3C;tr&#x3E;
 &#x9;&#x9;&#x3C;td class=&#x22;top left&#x22;&#x3E;&#x3C;/td&#x3E;&#x3C;td class=&#x22;top center&#x22;&#x3E;&#x3C;/td&#x3E;&#x3C;td class=&#x22;top right&#x22;&#x3E;&#x3C;/td&#x3E;
 &#x9;&#x3C;/tr&#x3E;
 &#x9;&#x3C;tr&#x3E;
@@ -116,12 +116,12 @@ td.middle.center {
 }
 </code></pre>
 			<h2>2.繪製連線區域的佈置</h2>
-			<p class="preface">有勝利者時會需要繪製連線，因此再建立一個<span>&#x3C;canvas&#x3E;</span>標籤，並將此<span>&#x3C;canvas&#x3E;</span>與整個<span>&#x3C;table&#x3E;</span>重疊。</p>
+			<p class="preface">有勝利者時會需要繪製連線，因此再建立一個<span>&#x3C;canvas&#x3E;標籤</span>，並將此<span>&#x3C;canvas&#x3E;</span>與整個<span>&#x3C;table&#x3E;</span>重疊。</p>
 			<img src="images/web/tic-tac-toe_002.jpg">
 			<h3>HTML：</h3>
 			<p><span>&#x3C;canvas&#x3E;</span>放置於<span>&#x3C;table&#x3E;</span>前，初始時不會被點擊到。</p>
 <pre><code class="language-html">
-&#x3C;div id=&#x22;gamearea&#x22;&#x3E;
+&#x3C;div&#x3E;
 &#x9;&#x3C;canvas id=&#x22;winnerline&#x22; width=&#x22;290&#x22; height=&#x22;290&#x22;&#x3E;&#x3C;/canvas&#x3E;
 &#x9;&#x3C;table&#x3E;&#x3C;/table&#x3E;
 &#x3C;/div&#x3E;
@@ -213,7 +213,7 @@ var allCases = [{&#x9;case: [0, 1, 2],
 &#x9;&#x9;&#x9;&#x9;}];
 </code></pre>
 			<h2>3.使用者與電腦的回合</h2>
-			<p class="preface">將每個<span>&#x3C;td&#x3E;</span>標籤裡的<span>&#x3C;canvas&#x3E;</span>設定事件監聽，使用者點擊和電腦選擇格子後則在<span>&#x3C;canvas&#x3E;</span>上作圖，並更新「九宮格」與「連線條件」的儲存狀態。</p>
+			<p class="preface">將每個<span>&#x3C;td&#x3E;標籤</span>裡的<span>&#x3C;canvas&#x3E;</span>設定事件監聽，使用者點擊和電腦選擇格子後則在<span>&#x3C;canvas&#x3E;</span>上作圖，並更新「九宮格」與「連線條件」的儲存狀態。</p>
 			<h3>Javascript：</h3>
 			<p>使用者回合的執行順序：</p>
 			<ol>
@@ -385,21 +385,21 @@ function result() {
 &#x9;var status = statusTransDArray(allDesks);
 &#x9;var winner; 
 
-&#x9;//&#x6C34;&#x5E73;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+&#x9;//水平連線條件
 &#x9;for (var i = 0; i &#x3C; 3; i++) {
 &#x9;&#x9;if ( (status[i][0] == status[i][1]) &#x26;&#x26; (status[i][1] == status[i][2]) &#x26;&#x26; (status[i][2] != &#x22;none&#x22;) ) {
 &#x9;&#x9;&#x9;winner = status[i][0];
 &#x9;&#x9;&#x9;break;
 &#x9;&#x9;}
 &#x9;}
-&#x9;//&#x5782;&#x76F4;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+&#x9;//垂直連線條件
 &#x9;for (var i = 0; i &#x3C; 3; i++) {
 &#x9;&#x9;if ( (status[0][i] == status[1][i]) &#x26;&#x26; (status[1][i] == status[2][i]) &#x26;&#x26; (status[2][i] != &#x22;none&#x22;) ) {
 &#x9;&#x9;&#x9;winner = status[0][i];
 &#x9;&#x9;&#x9;break;
 &#x9;&#x9;}
 &#x9;}
-&#x9;//&#x659C;&#x5411;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+&#x9;//斜向連線條件
 &#x9;if ( (status[0][0] == status[1][1]) &#x26;&#x26; (status[1][1] == status[2][2]) &#x26;&#x26; (status[2][2] != &#x22;none&#x22;) ) {
 &#x9;&#x9;winner = status[0][0];
 &#x9;} else if ( (status[2][0] == status[1][1]) &#x26;&#x26; (status[1][1] == status[0][2]) &#x26;&#x26; (status[0][2] != &#x22;none&#x22;) ) {
@@ -424,7 +424,7 @@ function result() {
 &#x9;var start = [];
 &#x9;var end = [];
 
-&#x9;//&#x6C34;&#x5E73;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+&#x9;//水平連線條件
 &#x9;for (var i = 0; i &#x3C; 3; i++) {
 &#x9;&#x9;if ( (status[i][0] == status[i][1]) &#x26;&#x26; (status[i][1] == status[i][2]) &#x26;&#x26; (status[i][2] != &#x22;none&#x22;) ) {
 &#x9;&#x9;&#x9;start = [0, (deskSize * 0.5) + (deskSize + border) * i];
@@ -433,7 +433,7 @@ function result() {
 &#x9;&#x9;&#x9;break;
 &#x9;&#x9;}
 &#x9;}
-&#x9;//&#x5782;&#x76F4;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+&#x9;//垂直連線條件
 &#x9;for (var i = 0; i &#x3C; 3; i++) {
 &#x9;&#x9;if ( (status[0][i] == status[1][i]) &#x26;&#x26; (status[1][i] == status[2][i]) &#x26;&#x26; (status[2][i] != &#x22;none&#x22;) ) {
 &#x9;&#x9;&#x9;start = [(deskSize * 0.5) + (deskSize + border) * i, 0];
@@ -442,7 +442,7 @@ function result() {
 &#x9;&#x9;&#x9;break;
 &#x9;&#x9;}
 &#x9;}
-&#x9;//&#x659C;&#x5411;&#x9023;&#x7DDA;&#x689D;&#x4EF6;
+&#x9;//斜向連線條件
 &#x9;if ( (status[0][0] == status[1][1]) &#x26;&#x26; (status[1][1] == status[2][2]) &#x26;&#x26; (status[2][2] != &#x22;none&#x22;) ) {
 &#x9;&#x9;start = [deskSize*0.1, deskSize*0.1];
 &#x9;&#x9;end = [(deskSize * 2.9) + border * 2, (deskSize * 2.9) + border * 2];
@@ -472,7 +472,7 @@ function result() {
 &#x9;var end = [];
 &#x9;var winner;
 
-&#x9;//&#xFF08;&#x7701;&#x7565;&#xFF09;&#x5224;&#x65B7;&#x52DD;&#x5229;&#x8005;&#x6642;&#x7684;&#x8A9E;&#x6CD5;&#x8207;&#x9023;&#x7DDA;&#x7684;(X, Y)&#x5EA7;&#x6A19;
+&#x9;//（省略）判斷勝利者時的語法與連線的(X, Y)座標
 
 &#x9;for (var i = 0; i &#x3C; allDesks.length; i++) {
 &#x9;&#x9;statusArray.push(allDesks[i].status);
@@ -593,7 +593,7 @@ function reset() {
 &#x9;&#x9;isMyTurn = false;
 &#x9;}
 &#x9;message.innerHTML = &#x22;Tic-Tac-Toe&#x22;;
-&#x9;//&#xFF08;&#x7701;&#x7565;&#xFF09;&#x540C;&#x91CD;&#x7F6E;&#x904A;&#x6232;&#x7684;&#x6307;&#x4EE4;&#x78BC;
+&#x9;//（省略）同重置遊戲的指令碼
 }
 
 function result() {
@@ -602,7 +602,7 @@ function result() {
 &#x9;var start = [];
 &#x9;var end = [];
 
-&#x9;//&#xFF08;&#x7701;&#x7565;&#xFF09;&#x540C;&#x7D50;&#x679C;&#x5224;&#x65B7;&#x7684;&#x6307;&#x4EE4;&#x78BC;
+&#x9;//（省略）同結果判斷的指令碼
 &#x9;
 &#x9;if (winner == user) {
 &#x9;&#x9;message.innerHTML = &#x22;You Win!&#x22;;
@@ -633,6 +633,9 @@ function result() {
 		<a href="#">產品設計作品</a>
 		<a href="graphicdesign.html">平面設計作品</a>
 	</nav>
+	<div class="largerpic">
+		<img id="fullsizepic" src="">
+	</div>
 	<footer>
 		<p>Copyright &copy; 2021</p>
 	</footer>

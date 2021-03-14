@@ -28,6 +28,12 @@ $(document).ready(function() {
         $("#fullsizepic").attr("src", $(this).children().attr("src"));
         $(".largerpic").css({ "display": "block" });
     });
+    
+    $(".description>img").click(function() {
+        $("#fullsizepic").attr("src", $(this).attr("src"));
+        $(".largerpic").css({ "display": "block" });
+    });
+
 
     $(".largerpic").click(function() {
         $(this).css({ "display": "none" });

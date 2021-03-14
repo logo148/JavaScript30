@@ -90,23 +90,7 @@
 
 
 
-/*圖片放大區*/
-.largerpic {
-    display: none;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    height: 100vh;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 3;
-}
 
-.largerpic>img {
-    margin: 20px;
-    max-width: calc(100% - 40px);
-    max-height: calc(100vh - 40px);
-}
 
 /*導覽列*/
 nav>a:nth-child(7) {
