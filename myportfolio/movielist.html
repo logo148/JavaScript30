@@ -2,99 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="UFT-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>To-Watch-List</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/my_style.css">
-    <link rel="stylesheet" href="styles/submenu_style.css">
-    <link rel="stylesheet" href="styles/movielist_style.css">
-    <link rel="stylesheet" href="styles/description_style.css">
-    <link rel="stylesheet" href="styles/monokai-sublime.css">
-    <script src="scripts/highlight.pack.js"></script>
-    <script src="scripts/code-line.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script>CodeLine.initOnPageLoad()</script>
+	<meta charset="UFT-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>To-Watch-List</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles/my_style.css">
+	<link rel="stylesheet" href="styles/submenu_style.css">
+	<link rel="stylesheet" href="styles/movielist_style.css">
+	<link rel="stylesheet" href="styles/description_style.css">
+	<link rel="stylesheet" href="styles/monokai-sublime.css">
+	<script src="scripts/highlight.pack.js"></script>
+	<script src="scripts/code-line.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script>CodeLine.initOnPageLoad()</script>
 </head>
 
 <body>
-    <input type="checkbox" id="menu_control">
-    <div class="header">
-        <div class="logo">
-            <a href="index.html"><img src="images/logo.png" height="40"></a>
-        </div>
-        <label for="menu_control" class="menu_btn">
-            <span>選單</span>
-        </label>
-    </div>
-    <div class="content">
-        <ul class="idTabs">
-            <li><a class="selected" href="#present">作品展示</a></li>
-            <li><a href="#htmlandcss">HTML&CSS</a></li>
-            <li><a href="#js">Javascript</a></li>
-        </ul>
-        <div class="cases" id="present">
-            <div class="mainzone">
-                <h2 id="titlearea">我的電影片單</h2>
-                <form class="searcharea" action="search" autocomplete="off">
-                    <input type="search" id="searchtext" placeholder="請輸入電影名稱">
-                    <button type="button" id="searchbtn"></button>
-                </form>
-                <div class="foldarea" id="mylistarea">
-                    <input type="checkbox" name="" class="fold_control" id="mylist_fold">
-                    <label class="foldbtn" for="mylist_fold">收摺</label>
-                    <h3>我的片單</h3>
-                    <div class="moviecontent">
-                        <ul class="allmymovies">
-                            <li></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="foldarea" id="resultarea">
-                    <input type="checkbox" name="" class="fold_control" id="result_fold">
-                    <label class="foldbtn" for="result_fold">收摺</label>
-                    <h3>搜尋結果</h3>
-                    <div class="moviecontent">
-                        <ul class="allresultmovies">
-                            <li></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="text">
-                <h2>電影片單</h2>
-                <p>透過AJAX請求「TMDB電影資料庫網站」的API搜尋資料，並顯示於搜尋結果欄。可將搜尋結果增加到上方清單內，並離線保存，於下次開啟本網頁時仍保存增加的電影清單。</p>
-                <h4>使用工具</h4>
-                <ul>
-                    <li><img src="images/skills/html0.jpg" width="30"><span>HTML</span></li>
-                    <li><img src="images/skills/css0.jpg" width="30"><span>CSS</span></li>
-                    <li><img src="images/skills/javascript0.jpg" width="30"><span>JavaScript</span></li>
-                    <li><img src="images/skills/jquery0.jpg" width="30"><span>jQuery</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="cases description" id="htmlandcss">
-        </div>
-        <div class="cases description" id="js">
-        </div>
-    </div>
-    <nav>
-        <a href="index.html">自傳與經歷</a>
-        <a href="myskills.html">具備技能</a>
-        <a href="tic-tac-toe.html">網頁作品1</a>
-        <a href="movielist.html">網頁作品2</a>
-        <a href="#">網頁作品3</a>
-        <a href="#">產品設計作品</a>
-        <a href="graphicdesign.html">平面設計作品</a>
-    </nav>
-    <footer>
-        <p>Copyright &copy; 2021</p>
-    </footer>
-    <script src="scripts/jquery-3.5.1.js"></script>
-    <script src="scripts/my_scripts.js"></script>
-    <script src="scripts/movielist_script.js"></script>
-    <script src="scripts/jquery.idTabs.min.js"></script>
+	<input type="checkbox" id="menu_control">
+	<div class="header">
+		<div class="logo">
+			<a href="index.html"><img src="images/logo.png" height="40"></a>
+		</div>
+		<label for="menu_control" class="menu_btn">
+			<span>選單</span>
+		</label>
+	</div>
+	<div class="content">
+		<ul class="idTabs">
+			<li><a class="selected" href="#present">作品展示</a></li>
+			<li><a href="#htmlandcss">HTML&CSS</a></li>
+			<li><a href="#js">Javascript</a></li>
+		</ul>
+		<div class="cases" id="present">
+			<div class="mainzone">
+				<h2 id="titlearea">我的電影片單</h2>
+				<form class="searcharea" action="search" autocomplete="off">
+					<input type="search" id="searchtext" placeholder="請輸入電影名稱">
+					<button type="button" id="searchbtn"></button>
+				</form>
+				<div class="foldarea" id="mylistarea">
+					<input type="checkbox" name="" class="fold_control" id="mylist_fold">
+					<label class="foldbtn" for="mylist_fold">收摺</label>
+					<h3>我的片單</h3>
+					<div class="moviecontent">
+						<ul class="allmymovies">
+							<li></li>
+						</ul>
+					</div>
+				</div>
+				<div class="foldarea" id="resultarea">
+					<input type="checkbox" name="" class="fold_control" id="result_fold">
+					<label class="foldbtn" for="result_fold">收摺</label>
+					<h3>搜尋結果</h3>
+					<div class="moviecontent">
+						<ul class="allresultmovies">
+							<li></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="text">
+				<h2>電影片單</h2>
+				<p>透過AJAX請求「TMDB電影資料庫網站」的API搜尋資料，並顯示於搜尋結果欄。可將搜尋結果增加到上方清單內，並離線保存，於下次開啟本網頁時仍保存增加的電影清單。</p>
+				<h4>使用工具</h4>
+				<ul>
+					<li><img src="images/skills/html0.jpg" width="30"><span>HTML</span></li>
+					<li><img src="images/skills/css0.jpg" width="30"><span>CSS</span></li>
+					<li><img src="images/skills/javascript0.jpg" width="30"><span>JavaScript</span></li>
+					<li><img src="images/skills/jquery0.jpg" width="30"><span>jQuery</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="cases description" id="htmlandcss">
+		</div>
+		<div class="cases description" id="js">
+		</div>
+	</div>
+	<nav>
+		<a href="index.html">自傳與經歷</a>
+		<a href="myskills.html">具備技能</a>
+		<a href="tic-tac-toe.html">網頁作品1</a>
+		<a href="movielist.html">網頁作品2</a>
+		<a href="#">網頁作品3</a>
+		<a href="#">產品設計作品</a>
+		<a href="graphicdesign.html">平面設計作品</a>
+	</nav>
+	<footer>
+		<p>Copyright &copy; 2021</p>
+	</footer>
+	<script src="scripts/jquery-3.5.1.js"></script>
+	<script src="scripts/my_scripts.js"></script>
+	<script src="scripts/movielist_script.js"></script>
+	<script src="scripts/jquery.idTabs.min.js"></script>
 </body>
 
 </html>

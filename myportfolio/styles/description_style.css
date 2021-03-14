@@ -51,16 +51,9 @@
     font-weight: 400;
 }
 
-
-
-
-
-
-
-
-
-
-
+.description * {
+    font-family: 'Source Code Pro', monospace;
+}
 
 .description {
     padding: 0 20px;
@@ -70,17 +63,19 @@
     margin: 20px 0 10px;
     padding-bottom: 0.3em;
     border-bottom: 2px solid #888;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
 .description>h3 {
     margin: 20px 10px 0;
+    font-family: 'Noto Sans TC', sans-serif;
 
 }
 
-pre {
-    font-size: 0.8em;
-    font-weight: 100;
+.description>pre {
+    font-weight: 300;
     margin: 10px;
+    tab-size: 4;
 }
 
 .description>p {
@@ -90,14 +85,15 @@ pre {
     line-height: 1.6;
     font-weight: 300;
     background-color: #f0f0f0;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
 .description>p.preface {
     margin: 25px 10px;
-    background-color: #d0d0d0;
+    background-color: #e0e0e0;
     font-size: 1.2em;
     line-height: 2;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .description>img {
@@ -122,6 +118,7 @@ pre {
 
 .description>table td {
     border: 1px solid #aaa;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
 .description>ol,
@@ -137,6 +134,7 @@ pre {
 .description>ul>li {
     padding: 3px 0;
     line-height: 1.6;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
 .description>p span,
@@ -149,7 +147,7 @@ pre {
     color: #f92472;
     background-color: #f4dfe5;
     border-radius: 10px;
-    font-weight: 300;
+    font-weight: 400;
 
 }
 
