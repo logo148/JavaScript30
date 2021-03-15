@@ -1,22 +1,22 @@
 /*作品區*/
 .mainzone {
-    padding: 30px 10px;
+	padding: 30px 10px;
 }
 
 
 /*說明區*/
 #titlearea {
-    box-sizing: border-box;
-    margin: auto;
-    padding: 10px;
-    width: 300px;
-    height: 70px;
-    text-align: center;
-    font-family: monospace;
-    font-size: 2.5em;
-    font-weight: bold;
-    color: rgb(242, 235, 211);
-    background: rgb(10, 189, 172);
+	box-sizing: border-box;
+	margin: auto;
+	padding: 10px;
+	width: 300px;
+	height: 70px;
+	text-align: center;
+	font-family: monospace;
+	font-size: 2.5em;
+	font-weight: bold;
+	color: rgb(242, 235, 211);
+	background: rgb(10, 189, 172);
 }
 
 
@@ -25,113 +25,114 @@
 /*搜尋區*/
 
 .searcharea {
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    margin: 30px auto 20px;
-    width: 80%;
-    border: 2px solid #000;
-    border-radius: 100px;
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	margin: 30px auto 20px;
+	width: 80%;
+	border: 2px solid #000;
+	border-radius: 100px;
 }
 
 .searcharea>input,
 .searcharea>button {
-    padding: 5px 10px;
-    border: none;
-    background-color: transparent;
+	padding: 5px 10px;
+	border: none;
+	background-color: transparent;
 }
 
 input:focus,
 button:focus {
-    outline: none;
+	outline: none;
 }
 
 .searcharea>input {
-    width: 100%;
-    font-size: initial;
+	width: 100%;
+	font-size: initial;
 }
 .searcharea>input::placeholder {
-    color: #ccc;
+	color: #ccc;
 }
 
 .searcharea>button {
-    width: 50px;
-    color: transparent;
-    background-image: url('../images/icon/search.png');
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-position: center;
+	width: 50px;
+	background-image: url('../images/icon/search.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: center;
+	cursor: pointer;
 }
 
 
 
 /*摺疊區塊*/
 .foldarea {
-    position: relative;
-    margin: 30px 0;
+	position: relative;
+	margin: 30px 0;
 }
 
 .foldarea>h3 {
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: 2px solid #000;
-    border-bottom: 2px solid #ccc;
-    border-radius: 10px 10px 0 0;
+	box-sizing: border-box;
+	padding: 5px 10px;
+	border: 2px solid #000;
+	border-bottom: 2px solid #ccc;
+	border-radius: 10px 10px 0 0;
 }
 
 /*內容區*/
 .moviecontent {
-    box-sizing: border-box;
-    padding: 10px 10px 10px;
-    text-align: center;
-    border: 2px solid #000;
-    border-top: none;
-    border-radius: 0 0 10px 10px;
-    overflow: hidden;
+	box-sizing: border-box;
+	padding: 10px 10px 10px;
+	text-align: center;
+	border: 2px solid #000;
+	border-top: none;
+	border-radius: 0 0 10px 10px;
+	overflow: hidden;
 }
 
 .moviecontent>ul {
-    box-sizing: border-box;
-    height: auto;
-    margin: 0 auto;
-    transform: translateY(0);
-    transition: 1s;
+	box-sizing: border-box;
+	height: auto;
+	margin: 0 auto;
+	transform: translateY(0);
+	transition: 1s;
 }
 
 /*收摺控制*/
 .fold_control {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
 }
 
 .fold_control:checked~.moviecontent {
-    height: 0;
+	height: 0;
 }
 
 .fold_control:checked~.moviecontent>ul {
-    transform: translateY(-150%);
+	transform: translateY(-150%);
 }
 
 .fold_control:checked~.foldbtn {
-    transform: scaleY(-1);
+	transform: scaleY(-1);
 }
 
 .foldbtn {
-    position: absolute;
-    right: 0;
-    box-sizing: border-box;
-    border-radius: 5px;
-    margin-top: 7px;
-    margin-right: 10px;
-    width: 50px;
-    color: transparent;
-    user-select: none;
-    /*background-color: #ccc;*/
-    background-image: url('../images/icon/fold.png');
-    background-repeat: no-repeat;
-    background-size: 50% 80%;
-    background-position: center;
+	position: absolute;
+	right: 0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	margin-top: 7px;
+	margin-right: 10px;
+	width: 50px;
+	color: transparent;
+	user-select: none;
+	/*background-color: #ccc;*/
+	background-image: url('../images/icon/fold.png');
+	background-repeat: no-repeat;
+	background-size: 50% 80%;
+	background-position: center;
+	cursor: pointer;
 }
 
 
@@ -139,55 +140,51 @@ button:focus {
 /*我的電影*/
 
 .moviecontent>ul.allmymovies {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    /*flex預設margin取消*/
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	/*flex預設margin取消*/
 }
 
 li.mymovie {
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    width: 250px;
-    margin: 5px 10px 5px;
-    /*flex的上下margin不會重和*/
-    border: 2px solid #aaa;
-    border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	width: 250px;
+	margin: 5px 10px 5px;
+	/*flex的上下margin不會重和*/
+	border: 2px solid #000;
+	border-radius: 5px;
 }
 
 /*電影標題*/
 li.mymovie>a {
-    display: -webkit-box;
-    padding: 5px;
-    text-align: left;
-    text-decoration: none;
-    width: 100%;
-    color: #000;
-    font-size: 1em;
-    font-weight: 500;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+	display: -webkit-box;
+	padding: 5px;
+	text-align: left;
+	text-decoration: none;
+	width: 100%;
+	color: #000;
+	font-size: 1em;
+	font-weight: 500;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
-
-
-
-
-
 
 /*刪除按鈕*/
 li.mymovie>button {
-    width: 50px;
-    border: none;
-    /*border-left: 2px solid #aaa;*/
-    background-color: transparent;
-    background-image: url('../images/icon/delete.png');
-    background-repeat: no-repeat;
-    background-size: 60%;
-    background-position: center;
+	width: 50px;
+	border: none;
+	/*border-left: 2px solid #aaa;*/
+	background-color: transparent;
+	background-image: url('../images/icon/delete.png');
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: center;
+	cursor: pointer;
 }
 
 
@@ -197,134 +194,127 @@ li.mymovie>button {
 
 /*搜尋到的電影*/
 li.resultmovie {
-    display: flex;
-    box-sizing: border-box;
-    width: 100%;
-    margin: 10px auto 20px;
-    border: 2px solid #aaa;
-    border-radius: 0 15px 15px 0;
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 10px auto 20px;
+	/*border: 1px solid #aaa;*/
+	border-radius: 0 15px 15px 0;
+	box-shadow: 2px 2px 10px 2px #cccccc;
 }
 
 li.resultmovie:last-child {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 li.resultmovie>a {
-    width: 25%;
+	width: 25%;
 }
 
 /*圖片置中設定*/
 li.resultmovie>a::before {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
+	content: "";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
 }
 
 li.resultmovie>a>img {
-    display: inline-block;
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
 }
 
 /*搜尋到的電影介紹*/
 li.resultmovie .movieinfo {
-    box-sizing: border-box;
-    width: 60%;
-    margin: auto 10px;
-    text-align: left;
-    vertical-align: middle;
+	box-sizing: border-box;
+	width: 60%;
+	margin: auto 10px;
+	text-align: left;
+	vertical-align: middle;
 }
 
 /*電影標題*/
 li.resultmovie .movieinfo>a {
-    display: -webkit-inline-box;
-    text-align: left;
-    text-decoration: none;
-    color: #000;
-    font-weight: 700;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+	display: -webkit-inline-box;
+	text-align: left;
+	text-decoration: none;
+	color: #000;
+	font-weight: 700;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 /*電影簡介*/
 li.resultmovie .movieinfo>p {
-    display: -webkit-box;
-    box-sizing: border-box;
-    margin-top: 10px;
-    font-size: 0.4em;
-    line-height: 1.6;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+	display: -webkit-box;
+	box-sizing: border-box;
+	margin-top: 10px;
+	font-size: 0.4em;
+	line-height: 1.6;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 /*增加按鈕*/
 li.resultmovie>button {
-    width: 15%;
-    color: transparent;
-    border: none;
-    border-left: 2px solid #aaa;
-    background-color: transparent;
-    background-image: url('../images/icon/add.png');
-    background-repeat: no-repeat;
-    background-size: 60%;
-    background-position: center;
+	width: 15%;
+	border: none;
+	border-left: 2px solid #aaa;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: center;
+}
+
+li.resultmovie>button.addmovie {
+	background-image: url('../images/icon/add.png');
+	cursor: pointer;
 }
 
 li.resultmovie>button.added {
-    background-image: url('../images/icon/added.png');
-}
-
-
-/*導覽列*/
-nav>a:nth-child(4) {
-    font-weight: 500;
-    color: #f0437e;
-    border-bottom: 2px solid #f0437e;
+	background-image: url('../images/icon/added.png');
+	cursor: default;
 }
 
 /*RWD*/
 @media screen and (min-width: 768px) {
 
-    #present {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 30px 50px;
-    }
+	#present {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: flex-start;
+		padding: 30px 50px;
+	}
 
-    .mainzone {
-        margin-right: 10px;
-        padding: 10px 0px;
-        width: 60%;
-        max-width: 600px;
-    }
+	.mainzone {
+		margin-right: 10px;
+		padding: 10px 0px;
+		width: 60%;
+		max-width: 600px;
+	}
 
-    li.resultmovie>a {
-        width: auto;
-    }
+	li.resultmovie>a {
+		width: auto;
+	}
 
-    li.resultmovie>a>img {
-        max-width: 80px;
-    }
+	li.resultmovie>a>img {
+		max-width: 80px;
+	}
 
-    li.resultmovie .movieinfo {
-        width: 100%;
-    }
+	li.resultmovie .movieinfo {
+		width: 100%;
+	}
 
-    li.resultmovie>button {
-        width: 60px;
-    }
-
-    nav>a:nth-child(4) {
-        border-bottom: none;
-    }
+	li.resultmovie>button {
+		width: 60px;
+	}
 
 }
 

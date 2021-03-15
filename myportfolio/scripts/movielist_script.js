@@ -109,7 +109,7 @@ $(document).ready(function() {
 		if (movieListId.indexOf(key) == -1) {
 			$addBtn.addClass("addmovie");
 		} else {
-			$addBtn.css("background-image", "url('./images/icon/added.png')");
+			$addBtn.addClass("added");
 		}
 
 		var $li = $("<li></li>");
@@ -136,7 +136,7 @@ $(document).ready(function() {
 		$(".allmymovies").append($li);
 
 		$(this).removeClass("addmovie");
-		$(this).css("background-image", "url('./images/icon/added.png')");
+		$(this).addClass("added");
 
 		saveMovie(movieId, title);
 	}

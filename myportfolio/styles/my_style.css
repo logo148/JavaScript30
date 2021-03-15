@@ -12,6 +12,10 @@ body {
     overflow-y: scroll;
 }
 
+img, button {
+    color: transparent;
+}
+
 /*頁首*/
 .header {
     position: relative;
@@ -112,6 +116,13 @@ nav>a:hover {
 /*內容區*/
 .content {}
 
+/*導覽列*/
+nav>a.nowpage {
+    font-weight: 500;
+    color: #f0437e;
+    border-bottom: 2px solid #f0437e;
+}
+
 /*頁尾*/
 footer {
     clear: both;
@@ -151,6 +162,10 @@ footer {
         float: right;
         /*橫向排版+控制頁尾*/
         width: calc(100% - 220px);
+    }
+
+    nav>a.nowpage {
+        border-bottom: none;
     }
 
 }

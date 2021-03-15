@@ -61,7 +61,7 @@
 			</div>
 			<div class="text">
 				<h2>井字遊戲</h2>
-				<p>直接在九宮格內點擊即可開始遊戲，使用Canvas API在九宮格中繪圖，並加入簡易的指令碼讓電腦判斷如何選擇下一步，以優先取勝並阻擋玩家獲勝為目標，遊戲中可隨時點擊上方訊息欄位來重置遊戲。</p>
+				<p>使用javascript語法製作的一個小遊戲，請直接在九宮格內點擊即可開始遊戲。<br>主要是使用Canvas API在九宮格中繪圖，並加入指令碼讓電腦依據當下的戰況判斷如何選擇下一步，以優先取勝並阻擋玩家獲勝為目標。<br>遊戲過程中可隨時點擊上方的訊息欄位來重置遊戲。</p>
 				<h4>使用工具</h4>
 				<ul>
 					<li><img src="images/skills/html0.jpg" width="30"><span>HTML</span></li>
@@ -73,7 +73,11 @@
 		<div class="cases description" id="htmlandcss">
 			<h2>1.九宮格的佈置</h2>
 			<p class="preface">井字遊戲的「◯」、「╳」需要繪製於九宮格的九個區域，因此使用<span>&#x3C;table&#x3E;元件</span>建立九宮格，再將每個<span>&#x3C;td&#x3E;元件</span>裡分別放置一個<span>&#x3C;canvas&#x3E;元件</span>來作圖。</p>
-			<img src="images/web/tic-tac-toe_001.jpg">
+			<div>
+				<img src="images/web/tic-tac-toe_01-1.jpg">
+				<div id="arrow"></div>
+				<img src="images/web/tic-tac-toe_01-2.jpg">
+			</div>
 			<h3>HTML：</h3>
 <pre><code class="language-html">
 &#x3C;table&#x3E;
@@ -117,7 +121,11 @@ td.middle.center {
 </code></pre>
 			<h2>2.繪製連線區域的佈置</h2>
 			<p class="preface">有勝利者時會需要繪製連線，因此再建立一個<span>&#x3C;canvas&#x3E;元件</span>，並將此<span>&#x3C;canvas&#x3E;元件</span>與整個<span>&#x3C;table&#x3E;元件</span>重疊。</p>
-			<img src="images/web/tic-tac-toe_002.jpg">
+			<div>
+				<img src="images/web/tic-tac-toe_02-1.jpg">
+				<div id="arrow"></div>
+				<img src="images/web/tic-tac-toe_02-2.jpg">
+			</div>
 			<h3>HTML：</h3>
 			<p><span>&#x3C;canvas&#x3E;</span>放置於<span>&#x3C;table&#x3E;</span>前，初始時不會被點擊到。</p>
 <pre><code class="language-html">
@@ -143,7 +151,11 @@ canvas#winnerline {
 		<div class="cases description" id="js">
 			<h2>1.九宮格的狀態儲存</h2>
 			<p class="preface">建立一個長度為9的陣列，每個元素依序存放九宮格（由左上至右下）的id名稱與狀態。</p>
-			<img src="images/web/tic-tac-toe_003.jpg">
+			<div>
+				<img src="images/web/tic-tac-toe_03-1.jpg">
+				<div id="arrow"></div>
+				<img src="images/web/tic-tac-toe_03-2.jpg">
+			</div>
 			<h3>Javascript：</h3>
 			<ul>
 				<li><span>id屬性</span>儲存<span>&#x3C;canvas&#x3E;</span>的id名稱。</li>
@@ -156,7 +168,11 @@ var allDesks = [{ id: &#x22;a0&#x22;, status: &#x22;none&#x22; }, { id: &#x22;a1
 </code></pre>
 			<h2>2.連線條件的狀態儲存</h2>
 			<p class="preface">為了讓電腦判斷取勝方式，再建立一個陣列儲存所有8種連線的條件，每個元素裡儲存該條件代表的「索引陣列」、使用者與電腦分別「佔領的格數」，以及給電腦判斷選擇的「優先度」。</p>
-			<img src="images/web/tic-tac-toe_004.jpg">
+			<div>
+				<img src="images/web/tic-tac-toe_04-1.jpg">
+				<div id="arrow"></div>
+				<img src="images/web/tic-tac-toe_04-2.jpg">
+			</div>
 			<h3>Javascript：</h3>
 			<ul>
 				<li><span>case屬性</span>儲存該連線條件所代表的索引陣列</li>
@@ -579,7 +595,9 @@ function reset() {
 </code></pre>
 			<h2>10.訊息顯示區</h2>
 			<p class="preface">最後加入一個訊息顯示區來顯示狀態，並讓此區塊可以點擊來主動重置遊戲。</p>
-			<img src="images/web/tic-tac-toe_005.jpg">
+			<div>
+				<img src="images/web/tic-tac-toe_05.jpg">
+			</div>
 			<h3>Javascript：</h3>
 			<p>更新指令碼，在需要改變訊息的時候變更訊息並設定重置遊戲的事件監聽。</p>
 <pre><code class="language-javascript">
@@ -627,10 +645,9 @@ function result() {
 	<nav>
 		<a href="index.html">自傳與經歷</a>
 		<a href="myskills.html">具備技能</a>
-		<a href="tic-tac-toe.html">網頁作品1</a>
-		<a href="movielist.html">網頁作品2</a>
-		<a href="#">網頁作品3</a>
-		<a href="#">產品設計作品</a>
+		<a class="nowpage" href="tic-tac-toe.html">網頁作品１</a>
+		<a href="movielist.html">網頁作品２</a>
+		<a href="productdesign.html">產品設計作品</a>
 		<a href="graphicdesign.html">平面設計作品</a>
 	</nav>
 	<div class="largerpic">

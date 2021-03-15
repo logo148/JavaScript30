@@ -12,7 +12,6 @@
 .container>img {
     margin: 10px;
     width: 100px;
-    color: transparent;
     vertical-align: middle;
 }
 
@@ -21,19 +20,19 @@
     margin: 0 30px 20px;
     font-size: 10px;
     vertical-align: middle;
-    font-weight: 100;
 }
 
 .brief>h2 {
     margin-bottom: 15px;
     font-size: 20px;
+    font-weight: 400;
 }
 
 .brief>p {
-    font-size: 1.5em;
-    line-height: 1.4;
+    font-size: 1.6em;
+    line-height: 1.5;
     text-align: left;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .brief>blockquote {
@@ -45,7 +44,7 @@
 
 /*聯絡資訊*/
 .contact {
-    border-top: 2px solid #f7f7f7;
+    border-top: 1px solid #f7f7f7;
     list-style: none;
 }
 
@@ -62,7 +61,6 @@
 
 .contact>li>img {
     vertical-align: middle;
-    color: transparent;
 }
 
 /*內容區*/
@@ -74,7 +72,6 @@
 /*標題*/
 .intro>img {
     vertical-align: middle;
-    color: transparent;
 }
 
 .intro>h2 {
@@ -124,13 +121,6 @@
     padding: 2px;
 }
 
-/*導覽列*/
-nav>a:nth-child(1) {
-    font-weight: 500;
-    color: #f0437e;
-    border-bottom: 2px solid #f0437e;
-}
-
 /*RWD*/
 @media screen and (min-width: 768px) {
 
@@ -161,11 +151,6 @@ nav>a:nth-child(1) {
         /*padding: 30px;*/
         margin: auto;
         max-width: 800px;
-    }
-
-    nav a:nth-child(1) {
-
-        border-bottom: none;
     }
 }
 
