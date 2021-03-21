@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
-    height: 50vh;
+    height: 30vh;
     /*保持按鈕不跳動*/
 }
 
@@ -59,7 +59,6 @@
 
 .portfoliopics {
     margin: 2px 5px;
-    width: 20%;
     text-align: center;
     border: 1px solid #ccc;
 

@@ -39,11 +39,11 @@ $(document).ready(function() {
         $(this).css({ "display": "none" });
     });
 
-    $(".skill").hover(function() {
-        var np;
-        var src = $(this).children().first().attr("src");
-        src[src.length - 5] == 0 ? np = 0 : src[src.length - 5] == 1 ? np = 2 : np = 1;
-        $(this).children().first().attr("src", src.substring(0, src.length - 5) + np + ".jpg");
-    });
+    // $(".skill").hover(function() {
+    //     var np;
+    //     var src = $(this).children().first().attr("src");
+    //     src[src.length - 5] == 0 ? np = 0 : src[src.length - 5] == 1 ? np = 2 : np = 1;
+    //     $(this).children().first().attr("src", src.substring(0, src.length - 5) + np + ".jpg");
+    // });
 
 });
