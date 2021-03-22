@@ -37,8 +37,10 @@
 
 .brief>blockquote {
     margin-top: 10px;
-    font-size: 1.2em;
-    font-weight: 300;
+    font-family: 'Alegreya', serif;
+    font-style: italic;
+    font-size: 1.6em;
+    font-weight: 400;
     text-align: left;
 }
 
@@ -125,7 +127,7 @@
 @media screen and (min-width: 768px) {
 
     .banner {
-        padding: 20px;
+        padding: 10px 20px 0;
         text-align: left;
     }
 
@@ -137,16 +139,20 @@
     .brief {
         display: inline-block;
         margin: 20px 20px 20px 10px;
-        max-width: 60%;
+        max-width: calc(100% - 154px);
     }
 
     .contact {
-        display: inline-block;
+        text-align: center;
+/*        display: inline-block;
         border: none;
         vertical-align: middle;
-        background-color: transparent;
+        background-color: transparent;*/
     }
 
+    .contact>li {
+        margin: 10px 10px 15px;
+    }
     .intro {
         /*padding: 30px;*/
         margin: auto;
@@ -157,13 +163,22 @@
 /*RWD banner*/
 @media screen and (min-width: 1094px) {
 
+    .brief {
+        max-width: 60%;
+    }
+
     .contact {
+        display: inline-block;
+        text-align: left;
         padding-left: 20px;
+        border: none;
         border-left: 1px solid snow;
+        vertical-align: middle;
     }
 
     .contact>li {
         display: block;
+        margin: 10px 0 15px;
     }
 
 }
