@@ -20,13 +20,14 @@ img, button {
 .header {
     position: relative;
     height: 50px;
+    /*background-color: #000;*/
     background-image: linear-gradient(25deg, #244865, #4ca8e6);
     z-index: 2;
     /*蓋掉選單陰影*/
 }
 
 .logo {
-    width: 60px;
+    width: 130px;
     height: 50px;
     margin-left: 20px;
 }
@@ -36,6 +37,10 @@ img, button {
     color: transparent;
 }
 
+.logo>a>img {
+    vertical-align: middle;
+    margin: 10px 0;
+}
 /*選單控制*/
 #menu_control {
     position: absolute;
